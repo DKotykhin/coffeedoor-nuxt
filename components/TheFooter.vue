@@ -1,5 +1,5 @@
 <template>
-    <footer class='w-full flex flex-col gap-1 justify-center items-center h-[260px] bg-grey-800 text-white'>
+    <footer class='w-full flex flex-col gap-1 justify-center items-center h-[260px] bg-grey-800 text-white dark:text-grey-200'>
         <div class='flex gap-10'>
             <a :href="runtimeConfig.public.FACEBOOK_URL" target="_blank" aria-label='Facebook'
                 class='hover:-translate-y-1 transition duration-300'>

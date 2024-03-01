@@ -2,7 +2,13 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     css: ['@/assets/css/main.css'],
-    modules: ['@nuxtjs/tailwindcss', 'nuxt-icon', '@nuxtjs/i18n', '@nuxt/image'],
+    modules: [
+        '@nuxtjs/tailwindcss',
+        'nuxt-icon',
+        '@nuxtjs/i18n',
+        '@nuxt/image',
+        '@nuxtjs/color-mode',
+    ],
     app: {
         head: {
             charset: 'utf-8',
@@ -39,5 +45,10 @@ export default defineNuxtConfig({
             PHONE: process.env.PHONE,
             PHONE_LINK: process.env.PHONE_LINK,
         },
+    },
+    colorMode: {
+        preference: 'system', // default value of $colorMode.preference
+        fallback: 'light', // fallback value if not system preference found
+        classSuffix: '',
     },
 });

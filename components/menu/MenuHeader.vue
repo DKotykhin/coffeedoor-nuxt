@@ -13,10 +13,13 @@
         </div>
         <div class='flex gap-4'>
             <NuxtLink v-for="local in locales" :key="local.code" :to="switchLocalePath(local.code)"
-                :class="[local.code === locale ? 'link bg-mint text-white' : 'link border-grey-200 text-grey-500']">
+                :class="[local.code === locale ? 'link bg-mint text-white dark:text-grey-200' : 'link border-grey-200 text-grey-500']">
                 {{ local.name }}
             </NuxtLink>
         </div>
+        <NuxtLink :to="localePath('/')" class='hover:underline hover:text-mint'>
+            {{ $t("menu.button") }}
+        </NuxtLink>
     </section>
 </template>
 
