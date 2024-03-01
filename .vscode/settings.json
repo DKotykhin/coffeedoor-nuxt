@@ -4,5 +4,7 @@
     ],
     "files.associations": {
         "*.css": "tailwindcss",
+        "*.scss": "tailwindcss",
     },
+    "css.customData": [".vscode/tailwind.json"],
 }

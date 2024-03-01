@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <NuxtLink to="/">Home</NuxtLink>
-        <h1>Menu</h1>
+    <div class='flex flex-col items-center'>
+        <MenuHeader />
     </div>
 </template>
 

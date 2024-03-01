@@ -1,23 +1,27 @@
 <template>
     <footer class='w-full flex flex-col gap-1 justify-center items-center h-[260px] bg-grey-800 text-white'>
         <div class='flex gap-10'>
-            <a :href="runtimeConfig.FACEBOOK_URL" target="_blank" aria-label='Facebook'
+            <a :href="runtimeConfig.public.FACEBOOK_URL" target="_blank" aria-label='Facebook'
                 class='hover:-translate-y-1 transition duration-300'>
                 <Icon name="mdi:facebook" size='50' />
             </a>
-            <a :href="runtimeConfig.INSTAGRAM_URL" target="_blank" aria-label='Instagram'
+            <a :href="runtimeConfig.public.INSTAGRAM_URL" target="_blank" aria-label='Instagram'
                 class='hover:-translate-y-1 transition duration-300'>
                 <Icon name="mdi:instagram" size='50' />
             </a>
-            <a :href="runtimeConfig.TELEGRAM_URL" target="_blank" aria-label='Telegram'
+            <a :href="runtimeConfig.public.TELEGRAM_URL" target="_blank" aria-label='Telegram'
                 class='hover:-translate-y-1 transition duration-300'>
                 <Icon name="mdi:telegram" size='50' />
             </a>
         </div>
         <div class='flex flex-col items-center gap-4 mt-5'>
-            <a :href="'mailto:' + runtimeConfig.EMAIL_LINK">
-                    e-mail: <span className='hover:underline'>{{runtimeConfig.EMAIL_LINK}}</span>
-                </a>
+            <p>{{ $t('footer.address') }}</p>
+            <a :href="runtimeConfig.public.PHONE_LINK">
+                {{ $t('footer.phone') }}<span class='hover:underline'>{{ runtimeConfig.public.PHONE }}</span>
+            </a>
+            <a :href="'mailto:' + runtimeConfig.public.EMAIL_LINK">
+                e-mail: <span className='hover:underline'>{{ runtimeConfig.public.EMAIL_LINK }}</span>
+            </a>
         </div>
         <div class='flex justify-between gap-4 w-full max-w-[900px] px-4 md:px-8 mt-3'>
             <p class='text-grey text-sm'>&copy;{{ format(new Date(), 'yyyy') }} &nbsp; CoffeeDoor</p>
