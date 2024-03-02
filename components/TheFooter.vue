@@ -20,11 +20,11 @@
                 {{ $t('footer.phone') }}<span class='hover:underline'>{{ runtimeConfig.public.PHONE }}</span>
             </a>
             <a :href="'mailto:' + runtimeConfig.public.EMAIL_LINK">
-                e-mail: <span className='hover:underline'>{{ runtimeConfig.public.EMAIL_LINK }}</span>
+                e-mail: <span class='hover:underline'>{{ runtimeConfig.public.EMAIL_LINK }}</span>
             </a>
         </div>
         <div class='flex justify-between gap-4 w-full max-w-[900px] px-4 md:px-8 mt-3'>
-            <p class='text-grey text-sm'>&copy;{{ format(new Date(), 'yyyy') }} &nbsp; CoffeeDoor</p>
+            <p class='text-grey text-sm'>&copy;{{ new Date().getFullYear() }} &nbsp; CoffeeDoor</p>
             <a href='https://www.linkedin.com/in/dmytro-kotykhin-4683151b' target='_blank'
                 class='flex gap-1 hover:underline decoration-grey transition duration-300 text-right'>
                 <p class='text-grey text-sm'>Powered by Dmytro Kotykhin</p>
@@ -34,7 +34,6 @@
 </template>
 
 <script setup lang="ts">
-import { format } from 'date-fns';
-
 const runtimeConfig = useRuntimeConfig()
+
 </script>
