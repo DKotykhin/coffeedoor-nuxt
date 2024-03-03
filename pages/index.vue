@@ -2,6 +2,7 @@
   <div>
     <MainTopBlock />
     <MainInfo />
+    <MainAboutText />
   </div>
 </template>
 
