@@ -3,17 +3,22 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     css: ['@/assets/css/main.css'],
     modules: [
-      '@nuxtjs/tailwindcss',
-      'nuxt-icon',
-      '@nuxtjs/i18n',
-      '@nuxt/image',
-      '@nuxtjs/color-mode',
-      '@vueuse/nuxt',
+        '@nuxtjs/tailwindcss',
+        'nuxt-icon',
+        '@nuxtjs/i18n',
+        '@nuxt/image',
+        '@nuxtjs/color-mode',
+        '@vueuse/nuxt',
     ],
     app: {
         head: {
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
+        },
+    },
+    router: {
+        options: {
+            scrollBehaviorType: 'smooth',
         },
     },
     i18n: {
