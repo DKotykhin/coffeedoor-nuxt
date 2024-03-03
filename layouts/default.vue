@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen flex flex-col justify-between">
         <ColorMode />
-        <NuxtPage />
+        <slot />
         <TheFooter />
     </div>
 </template>

@@ -15,4 +15,5 @@ useSeoMeta({
   ogImage: "https://coffeedoor-nuxt.vercel.app/background.webp",
   ogTitle: "CoffeeDoor - кав'ярня та магазин свіжообсмаженої кави",
 });
+
 </script>
