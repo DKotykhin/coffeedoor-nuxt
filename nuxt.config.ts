@@ -1,14 +1,7 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     css: ['@/assets/css/main.css'],
-    modules: [
-        '@nuxtjs/tailwindcss',
-        'nuxt-icon',
-        '@nuxtjs/i18n',
-        '@nuxt/image',
-        '@nuxtjs/color-mode',
-        '@vueuse/nuxt',
-    ],
+    modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt', '@nuxt/image'],
     app: {
         head: {
             charset: 'utf-8',

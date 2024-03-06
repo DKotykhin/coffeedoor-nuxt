@@ -10,9 +10,12 @@
                     Brew Bar & Coffeeshop
                 </h2>
                 <div class='flex flex-col min-[360px]:flex-row gap-4 md:gap-8 mt-16'>
-                    <NuxtLink :to="{ hash: '#contacts' }" class='hover:underline hover:text-mint'>Contacts</NuxtLink>
-                    <NuxtLink :to="localePath('/menu')" class='hover:underline hover:text-mint'>Menu</NuxtLink>
-                    <NuxtLink :to="localePath('/thanks')" class='hover:underline hover:text-mint'>Thanks</NuxtLink>
+                    <UButton :to="{ hash: '#contacts' }" size='xl' color='white' class='rounded-xl w-[150px] flex justify-center'>
+                        Contacts
+                    </UButton>
+                    <UButton :to="localePath('/menu')" size='xl' class='rounded-xl w-[150px] flex justify-center'>
+                        Menu
+                    </UButton>
                 </div>
             </div>
         </transition>

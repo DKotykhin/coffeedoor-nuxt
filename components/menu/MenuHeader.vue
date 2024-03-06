@@ -17,9 +17,6 @@
                 {{ local.name }}
             </NuxtLink>
         </div>
-        <NuxtLink :to="localePath('/')" class='hover:underline hover:text-mint'>
-            {{ $t("menu.button") }}
-        </NuxtLink>
     </section>
 </template>
 
