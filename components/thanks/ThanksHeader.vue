@@ -11,9 +11,7 @@
                 {{ $t("thanks.subtitle") }}
             </h2>
         </div>
-        <NuxtLink :to="localePath('/')" class='hover:underline hover:text-mint'>
-            {{ $t("thanks.button") }}
-        </NuxtLink>
+        <TheLink to="/" />
     </section>
 </template>
 

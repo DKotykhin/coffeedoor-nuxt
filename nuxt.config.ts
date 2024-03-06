@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     css: ['@/assets/css/main.css'],
-    modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt', '@nuxt/image'],
+    modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt', '@nuxt/image', 'nuxt-swiper'],
     app: {
         head: {
             charset: 'utf-8',

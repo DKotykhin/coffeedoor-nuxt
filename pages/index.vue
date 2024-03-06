@@ -2,6 +2,7 @@
   <div>
     <MainTopBlock />
     <MainInfo />
+    <MainImageSwiper />
     <MainAboutText />
   </div>
 </template>

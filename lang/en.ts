@@ -3,6 +3,10 @@ export default {
         address: 'Kharkiv, Pushkinskaya str., 50/52',
         phone: 'Phone: ',
     },
+    top: {
+        button_1: 'CoffeeShop',
+        button_2: 'CoffeeBar',
+    },
     info: {
         title: 'CoffeeDoor Brew Bar & Coffeeshop',
         subtitle:

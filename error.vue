@@ -18,9 +18,7 @@ const localePath = useLocalePath();
                 <p class='text-lg text-grey dark:text-grey-200'>
                     {{ error?.message }}
                 </p>
-                <NuxtLink :to="localePath('/')" class='text-2xl text-mint uppercase font-medium hover:underline'>
-                    Main Page
-                </NuxtLink>
+                <TheLink to="/" />
             </div>
         </section>
     </NuxtLayout>

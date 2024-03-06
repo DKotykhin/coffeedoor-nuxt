@@ -10,11 +10,12 @@
                     Brew Bar & Coffeeshop
                 </h2>
                 <div class='flex flex-col min-[360px]:flex-row gap-4 md:gap-8 mt-16'>
-                    <UButton :to="{ hash: '#contacts' }" size='xl' color='white' class='rounded-xl w-[150px] flex justify-center'>
-                        Contacts
+                    <UButton :to="{ hash: '#contacts' }" size='xl' color='white'
+                        class='rounded-xl min-w-[150px] flex justify-center'>
+                        {{ $t("top.button_1") }}
                     </UButton>
-                    <UButton :to="localePath('/menu')" size='xl' class='rounded-xl w-[150px] flex justify-center'>
-                        Menu
+                    <UButton :to="localePath('/menu')" size='xl' class='rounded-xl min-w-[150px] flex justify-center'>
+                        {{ $t("top.button_2") }}
                     </UButton>
                 </div>
             </div>

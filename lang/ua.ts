@@ -3,6 +3,10 @@ export default {
         address: 'м.Харків, вул. Пушкінська, 50/52',
         phone: 'Телефон: ',
     },
+    top: {
+        button_1: 'Магазин',
+        button_2: 'Меню кав\'ярні',
+    },
     info: {
         title: "Кав'ярня та магазин свіжообсмаженої кави CoffeeDoor",
         subtitle:
