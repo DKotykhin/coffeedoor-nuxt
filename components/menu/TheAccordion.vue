@@ -1,12 +1,26 @@
 <template>
     <section class='w-full flex flex-col items-center px-4'>
-        <div class='w-full max-w-[700px] my-8 border rounded-md shadow-md'>
+        <div v-if="pending" class='flex flex-col justify-center items-center gap-2 h-[200px]'>
+            <USkeleton class="h-8 w-[500px]" />
+            <USkeleton class="h-8 w-[500px]" />
+            <USkeleton class="h-8 w-[500px]" />
+        </div>
+        <div v-else class='w-full max-w-[700px] my-8 border border-grey-100 dark:border-grey-500 rounded-md shadow-md'>
             <UAccordion color="gray" variant="soft" size="lg" :items="items">
-                <template #item="{ item }">
-                    <div v-for='oneItem in item?.content' class="italic">
+                <template #subItems="{ item }">
+                    <div v-for='oneItem in item?.content' :key='oneItem.id' class="italic">
                         <div class='flex w-full justify-between px-4'>
-                            <p>{{ oneItem.itemName }}</p>
-                            <p>{{ oneItem.price }} uah</p>
+                            <div className='flex flex-col mb-2'>
+                                <p className='font-medium'>
+                                    {{ oneItem.title }}
+                                </p>
+                                <p className='text-sm italic text-grey'>
+                                    {{ oneItem.description }}
+                                </p>
+                            </div>
+                            <p className='mb-2 whitespace-nowrap'>
+                                {{ oneItem.price }} {{ oneItem.language_code === LanguageCode.UA ? ' грн' : ' uah' }}
+                            </p>
                         </div>
                     </div>
                 </template>
@@ -16,19 +30,22 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuItem } from '~/types/menu';
+import { type MenuItem, LanguageCode } from '@prisma/client';
+import { languageCode } from '@/libs/languageCode';
 
-const { data } = await useAsyncData('menu', () => $fetch('/api/menu'));
+const { locale } = useI18n();
+const language_code = languageCode(locale.value);
 
-const items = ref(data.value?.body.map((item: any) => (
-    {
-        label: item.label,
-        content: item.items.map((subItem: MenuItem) => (
-            {
-                itemName: subItem.itemName,
-                price: subItem.price,
-            }
-        ))
-    }
-)));
+const { data, pending } = await useAsyncData('menu', () => $fetch(`/api/menu?language_code=${language_code}`));
+const items = computed(() => data.value?.map((category: any) => ({
+    label: category.title,
+    slot: 'subItems',
+    content: category.menuItems.length ? category.menuItems.map((subItem: MenuItem) => ({
+        id: subItem.id,
+        title: subItem.title,
+        price: subItem.price,
+        description: subItem.description,
+        language_code: subItem.language_code,
+    })) : null,
+})));
 </script>

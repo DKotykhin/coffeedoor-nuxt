@@ -1,0 +1,163 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RoleTypes {
+  USER
+  ADMIN
+  SUBADMIN
+  VISITOR
+}
+
+enum LanguageCode {
+  UA
+  EN
+}
+
+enum DeliveryWay {
+  DELIVERY
+  PICKUP
+}
+
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+
+  email         String         @unique
+  userName      String?        @map("user_name")
+  address       String?
+  phone         String?
+  passwordHash  String?        @map("password_hash")
+  avatar        String?
+  role          RoleTypes      @default(value: USER)
+  resetPassword ResetPassword?
+  emailConfirm  EmailConfirm?
+}
+
+model ResetPassword {
+  id        String    @id @default(cuid())
+  token     String?   @unique
+  expiredAt DateTime? @map("expired_at")
+  changedAt DateTime? @map("changed_at")
+
+  userId String @unique @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model EmailConfirm {
+  id        String    @id @default(cuid())
+  token     String?   @unique
+  expiredAt DateTime? @map("expired_at")
+  verified  Boolean   @default(value: false)
+
+  userId String @unique @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserOrder {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+
+  deliveryWay   DeliveryWay @default(value: PICKUP) @map("delivery_way")
+  address       String?
+  comment       String?
+  status        String?
+  totalSum      Float?      @map("total_sum")
+  averageSum    Float?      @map("average_sum")
+  totalQuantity Int?        @map("total_quantity")
+  userId        String?     @map("user_id")
+  orderItems    OrderItem[]
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+
+  categoryTitle String  @map("category_title")
+  itemTitle     String  @map("item_title")
+  quantity      Int     @default(value: 1)
+  price         Float   @default(value: 0)
+  weight        Float?
+  slug          String?
+
+  userOrderId String    @map("user_order_id")
+  userOrder   UserOrder @relation(fields: [userOrderId], references: [id], onDelete: Cascade)
+}
+
+model MenuCategory {
+  id            String       @id @default(cuid())
+  language_code LanguageCode @default(value: UA)
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @default(now()) @updatedAt @map("updated_at")
+
+  title       String
+  description String?
+  image       String?
+  hidden      Boolean @default(value: false)
+  position    Int     @default(value: 0)
+
+  menuItems MenuItem[]
+}
+
+model MenuItem {
+  id            Int          @default(autoincrement())
+  language_code LanguageCode @default(value: UA)
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @default(now()) @updatedAt @map("updated_at")
+
+  title       String?
+  description String?
+  price       String?
+  hidden      Boolean @default(value: false)
+  position    Int     @default(value: 0)
+
+  menuId       String       @map("menu_id")
+  menuCategory MenuCategory @relation(fields: [menuId], references: [id], onDelete: Cascade)
+
+  @@id([id, language_code])
+}
+
+model StoreCategory {
+  id            String       @id @default(cuid())
+  language_code LanguageCode @default(value: UA)
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @default(now()) @updatedAt @map("updated_at")
+
+  title    String  @unique
+  subtitle String?
+  hidden   Boolean @default(value: false)
+  position Int     @default(value: 0)
+
+  storeItems StoreItem[]
+}
+
+model StoreItem {
+  language_code LanguageCode @default(value: UA)
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @default(now()) @updatedAt @map("updated_at")
+
+  slug        String   @id @map("slug")
+  title       String
+  description String?
+  details     String?
+  sortKey     String?  @map("sort_key")
+  sortValue   String?  @map("sort_value")
+  country     String?
+  tm          String?
+  price       Float    @default(value: 0)
+  oldPrice    Float?   @map("old_price")
+  weight      Float?
+  images      String[]
+  toOrder     Boolean  @default(value: false) @map("to_order")
+  discount    Int?
+  hidden      Boolean  @default(value: false)
+  position    Int      @default(value: 0)
+
+  StoreCategory   StoreCategory? @relation(fields: [storeCategoryId], references: [id])
+  storeCategoryId String         @map("store_category_id")
+}

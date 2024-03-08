@@ -22,13 +22,13 @@
 
 <script setup>
 const localePath = useLocalePath();
-const { locale, locales } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
+const { locale, locales } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
 
 </script>
 
 <style scoped>
 .link {
-    @apply border rounded-lg px-4 py-1 font-medium;
+    @apply border dark:border-grey-500 rounded-lg px-4 py-1 font-medium;
 }
 </style>
