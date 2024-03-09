@@ -1,7 +1,7 @@
 import { db } from '@/libs/db';
 
 import { ApiError } from '@/handlers/apiError';
-import { LanguageCode, MenuCategory, MenuItem } from '@/node_modules/.prisma/client';
+import { LanguageCode, MenuCategory, MenuItem } from '@/node_modules/@prisma/client';
 
 export interface MenuCategoryFull extends MenuCategory {
     menuItems: MenuItem[];
