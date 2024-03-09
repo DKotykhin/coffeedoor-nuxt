@@ -19,7 +19,7 @@
                                 </p>
                             </div>
                             <p className='mb-2 whitespace-nowrap'>
-                                {{ oneItem.price }} {{ oneItem.language_code === LanguageCode.UA ? ' грн' : ' uah' }}
+                                {{ oneItem.price }} {{ oneItem.language_code === "UA" ? ' грн' : ' uah' }}
                             </p>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { type MenuItem, LanguageCode } from '@prisma/client';
+import { type MenuItem } from '@prisma/client';
 import { languageCode } from '@/libs/languageCode';
 
 const { locale } = useI18n();
