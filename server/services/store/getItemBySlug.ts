@@ -2,7 +2,7 @@ import { db } from '@/libs/db';
 import { ApiError } from '@/handlers/apiError';
 import { StoreItem } from '@prisma/client';
 
-interface StoreItemBySlugProps {
+export interface StoreItemBySlugProps {
     categoryTitle?: string;
     storeItem: StoreItem;
     recommendationList?: StoreItem[];

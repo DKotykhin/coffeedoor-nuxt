@@ -1,9 +1,9 @@
 <template>
-    <div class='flex flex-col items-center'>
+    <main class='flex flex-col items-center'>
         <MenuHeader />
         <MenuTheAccordion />
         <TheLink to="/" />
-    </div>
+    </main>
 </template>
 
 <script setup lang="ts">

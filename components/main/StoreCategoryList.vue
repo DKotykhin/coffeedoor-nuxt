@@ -1,9 +1,7 @@
 <template>
     <block-wrapper>
-        <div v-if="pending" class='flex flex-col justify-center items-center gap-2 h-[200px]'>
-            <USkeleton class="h-8 w-[250px] md:w-[500px]" />
-            <USkeleton class="h-8 w-[250px] md:w-[500px]" />
-            <USkeleton class="h-8 w-[250px] md:w-[500px]" />
+        <div v-if="pending">
+            <TheSkeleton />
         </div>
         <div v-else class='flex flex-col items-center max-w-[1114px] mb-6'>
             <div v-for='category in categories' :key='category.id' :id='category.position.toString()'>

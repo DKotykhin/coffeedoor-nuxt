@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <main>
     <MainTopBlock />
-    <MainInfo />
+    <MainTheInfo />
     <MainStoreCategoryList />
     <MainImageSwiper />
     <MainAboutText />
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">

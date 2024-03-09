@@ -3,7 +3,7 @@
         <h4 class='text-3xl md:text-[40px] max-w-[700px] text-center font-bold tracking-wide'>
             Our coffee &#8211; Everything matters
         </h4>
-        <div class='max-w-[900px] text-grey dark:text-grey-200 font-light md:text-lg mt-10 mb-6 md:mb-12'>
+        <div class='max-w-[900px] text-grey dark:text-grey-200 font-light md:text-lg my-6 md:mb-12'>
             <p>{{ $t("about.paragraph_1") }}</p>
             <p class='mt-4'>{{ $t("about.subtitle") }}</p>
             <div ref="target" class='min-h-[190px] my-4'>

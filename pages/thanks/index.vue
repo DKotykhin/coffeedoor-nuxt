@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <main>
         <ThanksHeader />
-    </div>
+    </main>
 </template>
 
 <script setup lang="ts">
