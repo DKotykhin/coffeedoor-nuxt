@@ -2,6 +2,7 @@
   <div>
     <MainTopBlock />
     <MainInfo />
+    <MainStoreCategoryList />
     <MainImageSwiper />
     <MainAboutText />
   </div>

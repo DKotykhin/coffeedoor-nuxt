@@ -1,7 +1,7 @@
 <template>
-    <NuxtLink :to="localePath(to)" class='hover:underline hover:text-mint mb-8'>
+    <UButton :to="localePath(to)" size='lg' class='mb-8'>
         {{ $t("menu.button") }}
-    </NuxtLink>
+    </UButton>
 </template>
 
 <script setup>
