@@ -1,5 +1,5 @@
 import { H3Event } from 'h3';
-import { LanguageCode } from '@/node_modules/@prisma/client';
+import { LanguageCode } from '@prisma/client';
 
 import { getMenu } from '../services/menu/getMenu';
 

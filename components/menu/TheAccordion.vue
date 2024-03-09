@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { type MenuItem, LanguageCode } from '@/node_modules/@prisma/client';
+import { type MenuItem, LanguageCode } from '@prisma/client';
 import { languageCode } from '@/libs/languageCode';
 
 const { locale } = useI18n();

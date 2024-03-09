@@ -1,3 +1,7 @@
+import { createRequire } from "module";
+
+const prismaClientPath = createRequire(import.meta.url).resolve("@prisma/client");
+
 export default defineNuxtConfig({
     devtools: { enabled: true },
     css: ['@/assets/css/main.css'],
@@ -53,4 +57,11 @@ export default defineNuxtConfig({
         fallback: 'light', // fallback value if not system preference found
         classSuffix: '',
     },
+    vite: {
+        resolve: {
+          alias: {
+            ".prisma/client/index-browser": prismaClientPath.replace("@prisma/client/default.js", ".prisma/client/index-browser.js"),
+          },
+        },
+      },
 });
