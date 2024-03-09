@@ -1,4 +1,4 @@
-import { LanguageCode } from '@prisma/client';
+import { LanguageCode } from '@/node_modules/.prisma/client';
 
 export const languageCode = (lang: string): LanguageCode => {
     let language_code;
