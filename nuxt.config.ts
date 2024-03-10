@@ -5,7 +5,7 @@ const prismaClientPath = createRequire(import.meta.url).resolve("@prisma/client"
 export default defineNuxtConfig({
     devtools: { enabled: true },
     css: ['@/assets/css/main.css'],
-    modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt', '@nuxt/image', 'nuxt-swiper'],
+    modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt', '@nuxt/image', 'nuxt-swiper', '@vee-validate/nuxt'],
     app: {
         head: {
             charset: 'utf-8',

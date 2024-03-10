@@ -5,7 +5,7 @@ export default {
     },
     top: {
         button_1: 'Магазин',
-        button_2: 'Меню кав\'ярні',
+        button_2: "Меню кав'ярні",
     },
     info: {
         title: "Кав'ярня та магазин свіжообсмаженої кави CoffeeDoor",
@@ -45,6 +45,24 @@ export default {
         title: "Меню кав'ярні",
         subtitle: 'ми пропонуємо напої з свіжообсмаженої кави',
         currency: ' грн',
+        button: 'На Головну',
+    },
+    auth: {
+        title_1: 'Створити кабінет',
+        title_2: 'Вхід до кабінету',
+        userName: "Ваше ім'я",
+        userNamePlaceholder: "Введіть ім'я...",
+        email: 'Ваша пошта',
+        emailPlaceholder: 'Введіть email...',
+        password: 'Ваш пароль',
+        passwordPlaceholder: 'Введіть пароль...',
+        forgotPassword: 'Забули пароль?',
+        signIn: 'Увійти',
+        signUp: 'Зареєструватися',
+        message_1: 'Є особистий кабінет?',
+        message_2: 'як користувач',
+        message_3: 'Немає особистого кабінета?',
+        message_4: 'як новий користувач',
         button: 'На Головну',
     },
 };
