@@ -1,11 +1,19 @@
-import { createRequire } from "module";
+import { createRequire } from 'module';
 
-const prismaClientPath = createRequire(import.meta.url).resolve("@prisma/client");
+const prismaClientPath = createRequire(import.meta.url).resolve('@prisma/client');
 
 export default defineNuxtConfig({
     devtools: { enabled: true },
     css: ['@/assets/css/main.css'],
-    modules: ['@nuxt/ui', '@nuxtjs/i18n', '@vueuse/nuxt', '@nuxt/image', 'nuxt-swiper', '@vee-validate/nuxt'],
+    modules: [
+        '@nuxt/ui',
+        '@nuxtjs/i18n',
+        '@vueuse/nuxt',
+        '@nuxt/image',
+        'nuxt-swiper',
+        '@vee-validate/nuxt',
+        '@pinia/nuxt',
+    ],
     app: {
         head: {
             charset: 'utf-8',
@@ -59,9 +67,12 @@ export default defineNuxtConfig({
     },
     vite: {
         resolve: {
-          alias: {
-            ".prisma/client/index-browser": prismaClientPath.replace("@prisma/client/default.js", ".prisma/client/index-browser.js"),
-          },
+            alias: {
+                '.prisma/client/index-browser': prismaClientPath.replace(
+                    '@prisma/client/default.js',
+                    '.prisma/client/index-browser.js'
+                ),
+            },
         },
-      },
+    },
 });

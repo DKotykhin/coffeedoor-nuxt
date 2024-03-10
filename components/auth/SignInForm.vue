@@ -4,7 +4,7 @@
         <form @submit="onSubmit" class='w-full flex flex-col gap-2 px-0 md:px-6'>
             <FormInputText name="email" :placeholder="$t('auth.emailPlaceholder')" :label="$t('auth.email')" />
             <FormInputPassword name="password" :placeholder="$t('auth.passwordPlaceholder')" :label="$t('auth.password')" />
-            <UButton size='lg' type='submit' icon="i-heroicons-lock-open" class='flex justify-center mt-6'>
+            <UButton block size='lg' type='submit' icon="i-heroicons-lock-open" class='mt-6'>
                 {{ $t('auth.signIn') }}
             </UButton>
         </form>

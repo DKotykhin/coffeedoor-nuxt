@@ -13,7 +13,7 @@
                         {{ category.subtitle }}
                     </h4>
                 </div>
-                <MainStoreCard :items='(category.storeItems as unknown as StoreItem[])' :categoryTitle='category.title' />
+                <MainStoreItemList :items='(category?.storeItems as unknown as StoreItem[])' :categoryTitle='category.title' />
             </div>
         </div>
     </block-wrapper>

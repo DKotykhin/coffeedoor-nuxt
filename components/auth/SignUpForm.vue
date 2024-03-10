@@ -5,7 +5,7 @@
             <FormInputText name="userName" :placeholder="$t('auth.userNamePlaceholder')" :label="$t('auth.userName')" />
             <FormInputText name="email" :placeholder="$t('auth.emailPlaceholder')" :label="$t('auth.email')" />
             <FormInputPassword name="password" :placeholder="$t('auth.passwordPlaceholder')" :label="$t('auth.password')" />
-            <UButton size='lg' type='submit' icon="i-heroicons-pencil-square" class='flex justify-center mt-6'>
+            <UButton block size='lg' type='submit' icon="i-heroicons-pencil-square" class='mt-6'>
                 {{ $t('auth.signUp') }}
             </UButton>
         </form>

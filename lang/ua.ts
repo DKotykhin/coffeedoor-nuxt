@@ -21,6 +21,18 @@ export default {
         address: 'м.Харків, вул. Пушкінська, 50/52',
         phone: 'Телефон: ',
     },
+    card: {
+        details: 'Детальніше',
+        add: 'В кошик',
+        currency: ' грн',
+        weight: 'Вага: ',
+        made: 'Виробник: ',
+        country: 'Країна: ',
+        order: 'під замовлення',
+        unit: 'г',
+        roasted: 'Обсмаження: ',
+        isOrder: 'Під замовлення',
+    },
     about: {
         title: 'Про нас',
         paragraph_1:

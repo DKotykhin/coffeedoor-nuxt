@@ -21,6 +21,18 @@ export default {
         address: '50/52, Pushkinskaya str., Kharkiv',
         phone: 'tel: ',
     },
+    card: {
+        details: 'Details',
+        add: 'Add',
+        currency: ' uah',
+        weight: 'Weight: ',
+        made: 'Made by: ',
+        country: 'Country: ',
+        order: 'on order',
+        unit: 'g',
+        roasted: 'Roasted: ',
+        isOrder: 'on order',
+    },
     about: {
         title: 'About us',
         paragraph_1:
