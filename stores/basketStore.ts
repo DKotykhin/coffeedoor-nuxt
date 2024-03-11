@@ -66,5 +66,8 @@ export const useBasketStore = defineStore('basket', {
         totalPrice(): number {
             return this.basket.reduce((acc, product) => acc + product.price * product.quantity, 0);
         },
+        getBasket(): IBasket[] {
+            return this.basket;
+        }
     },
 });

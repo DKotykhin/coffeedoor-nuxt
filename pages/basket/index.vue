@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h1>Basket</h1>
+        <BasketCard />
     </main>
 </template>
 
