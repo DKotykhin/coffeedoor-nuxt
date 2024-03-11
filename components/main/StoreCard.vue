@@ -51,7 +51,7 @@ defineProps({
 });
 
 const addToCard = ({ item, categoryTitle }: { item: StoreItem, categoryTitle: string }) => {
-    console.log('Add to card', item);
+    // console.log('Add to card', item);
     const { slug, title, price, weight, images } = item;
     store.addProductToBasket({
         slug,

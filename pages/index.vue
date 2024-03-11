@@ -5,6 +5,7 @@
     <MainStoreCategoryList />
     <MainImageSwiper />
     <MainAboutText />
+    <BasketIcon />
   </main>
 </template>
 
