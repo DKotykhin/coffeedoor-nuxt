@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
+import Cookies from 'js-cookie';
 
+const cookie = Cookies.get('basket');
 export interface IBasket {
     slug: string;
     title: string;
@@ -15,12 +17,17 @@ export const useBasketStore = defineStore('basket', {
         basket: [] as IBasket[],
     }),
     actions: {
+        initializeBasket() {
+            if (cookie) {
+                this.basket = JSON.parse(cookie);
+            }
+        },
         addProductToBasket(product: IBasket) {
-            const itemIndex = this.basket.findIndex((item) => item.slug === product.slug);
+            const itemIndex = this.basket.findIndex((item: IBasket) => item.slug === product.slug);
             if (itemIndex === -1) {
                 this.basket.push(product);
             } else {
-                this.basket = this.basket.map((item) => {
+                this.basket = this.basket.map((item: IBasket) => {
                     return item.slug === product.slug
                         ? {
                               ...item,
@@ -29,12 +36,14 @@ export const useBasketStore = defineStore('basket', {
                         : item;
                 });
             }
+            Cookies.set('basket', JSON.stringify(this.basket));
         },
         removeItem(slug: string) {
-            this.basket = this.basket.filter((item) => item.slug !== slug);
+            this.basket = this.basket.filter((item: IBasket) => item.slug !== slug);
+            Cookies.set('basket', JSON.stringify(this.basket));
         },
         quantityDec(slug: string) {
-            this.basket = this.basket.map((item) => {
+            this.basket = this.basket.map((item: IBasket) => {
                 return item.slug === slug
                     ? {
                           ...item,
@@ -42,10 +51,11 @@ export const useBasketStore = defineStore('basket', {
                       }
                     : item;
             });
+            Cookies.set('basket', JSON.stringify(this.basket));
             return this.basket;
         },
         quantityInc(slug: string) {
-            this.basket = this.basket.map((item) => {
+            this.basket = this.basket.map((item: IBasket) => {
                 return item.slug === slug
                     ? {
                           ...item,
@@ -53,21 +63,26 @@ export const useBasketStore = defineStore('basket', {
                       }
                     : item;
             });
+            Cookies.set('basket', JSON.stringify(this.basket));
             return this.basket;
         },
         setEmptyBasket() {
             this.basket = [];
+            Cookies.remove('basket');
         },
     },
     getters: {
         totalQuantity(): number {
-            return this.basket.reduce((acc, product) => acc + product.quantity, 0);
+            return this.basket.reduce((acc: number, product: IBasket) => acc + product.quantity, 0);
         },
         totalPrice(): number {
-            return this.basket.reduce((acc, product) => acc + product.price * product.quantity, 0);
+            return this.basket.reduce(
+                (acc: number, product: IBasket) => acc + product.price * product.quantity,
+                0
+            );
         },
         getBasket(): IBasket[] {
             return this.basket;
-        }
+        },
     },
 });

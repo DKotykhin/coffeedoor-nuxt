@@ -15,4 +15,8 @@ const store = useBasketStore()
 const localePath = useLocalePath();
 
 const totalQuantity = computed(() => store.totalQuantity)
+
+onMounted(() => {
+    store.initializeBasket()
+})
 </script>
