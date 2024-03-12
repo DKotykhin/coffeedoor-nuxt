@@ -1,7 +1,7 @@
 <template>
     <div class='w-full'>
         <label class='text-[14px] text-grey-500'>{{ label }}</label>
-        <UInput v-model="value" type="text" :placeholder="placeholder" size='lg'
+        <UTextarea v-model="value" type="text" :placeholder="placeholder" variant="outline" :rows="3"
             :color="(Boolean(errorMessage) ? 'red' : 'white')" />
         <p class='text-[14px] text-red-500'>{{ errorMessage }}</p>
     </div>

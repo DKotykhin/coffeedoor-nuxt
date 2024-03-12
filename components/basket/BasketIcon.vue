@@ -2,7 +2,7 @@
     <div v-if='totalQuantity > 0' class='fixed bottom-6 right-6 z-20 text-grey'>
         <NuxtLink :to="localePath('/basket')">
             <UChip :text="totalQuantity" size="2xl" inset :ui="{ base: '-m-1' }">
-                <Icon name="mdi:basket-outline" size='50' />
+                <Icon name="mdi:basket-outline" :class="['added-animation', showAnimation ? 'text-[60px]' : 'text-[50px]']" />
             </UChip>
         </NuxtLink>
     </div>
@@ -10,13 +10,25 @@
 
 <script setup lang="ts">
 import { useBasketStore } from '~/stores/basketStore';
-const store = useBasketStore()
 
+const store = useBasketStore();
 const localePath = useLocalePath();
+const showAnimation = ref(false);
 
-const totalQuantity = computed(() => store.totalQuantity)
+const totalQuantity = computed(() => store.totalQuantity);
 
-onMounted(() => {
-    store.initializeBasket()
-})
+watch(totalQuantity, (newValue, oldValue) => {
+    if (newValue > oldValue) {
+        showAnimation.value = true;
+        setTimeout(() => {
+            showAnimation.value = false;
+        }, 1000);
+    }
+});
 </script>
+
+<style scoped>
+.added-animation {
+    transition: all 0.5s ease;
+}
+</style>

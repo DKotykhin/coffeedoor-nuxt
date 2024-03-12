@@ -66,7 +66,7 @@ export const useBasketStore = defineStore('basket', {
             Cookies.set('basket', JSON.stringify(this.basket));
             return this.basket;
         },
-        setEmptyBasket() {
+        clearBasket() {
             this.basket = [];
             Cookies.remove('basket');
         },

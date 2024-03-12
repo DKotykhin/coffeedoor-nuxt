@@ -21,11 +21,13 @@ export const textFieldOptional = z
     .trim()
     .max(50, { message: 'Maximum 50 characters to fill' });
 
+const phoneRegex = new RegExp(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/);
 export const phone = z
     .string()
     .trim()
-    .min(11, { message: 'Invalid phone number' })
-    .max(12, { message: 'Invalid phone number' });
+    .regex(phoneRegex, 'Invalid phone number!')
+    .min(10, { message: 'Invalid phone number!' })
+    .max(13, { message: 'Invalid phone number!' });
 
 export const areaTextField = z
     .string()

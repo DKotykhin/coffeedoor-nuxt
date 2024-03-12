@@ -1,8 +1,6 @@
 <template>
     <div class='w-full'>
-        <label class='text-[14px] text-grey-500'>{{ label }}</label>
-        <UInput v-model="value" type="text" :placeholder="placeholder" size='lg'
-            :color="(Boolean(errorMessage) ? 'red' : 'white')" />
+        <URadioGroup v-model="value" :legend='legend' :options="options" />
         <p class='text-[14px] text-red-500'>{{ errorMessage }}</p>
     </div>
 </template>
@@ -15,8 +13,11 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    label: String,
-    placeholder: String,
+    options: {
+        type: Array,
+        required: true,
+    },
+    legend: String,
 });
 
 const { value, errorMessage } = useField(() => props.name);

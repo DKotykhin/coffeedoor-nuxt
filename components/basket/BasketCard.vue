@@ -6,7 +6,7 @@
             <UButton :to="localePath('/')" size='lg' class='my-4'>
                 {{ $t("basket.back") }}
             </UButton>
-            <BasketForm />
+            <BasketForm @submit-event='submitForm' />
         </div>
         <div v-else class='flex flex-col items-center gap-4'>
             <p class='text-4xl'>🥹</p>
@@ -18,12 +18,22 @@
 
 <script setup lang="ts">
 import { useBasketStore } from '~/stores/basketStore';
+import { useRouter } from 'vue-router';
+import type { BasketFormTypes } from '~/validation/basketValidation';
+
 const localePath = useLocalePath();
+const router = useRouter()
+const store = useBasketStore();
 
-const store = useBasketStore()
-const basket = computed(() => store.basket)
+const basket = computed(() => store.basket);
 
-onMounted(() => {
-    store.initializeBasket()
-})
+const submitForm = (values: BasketFormTypes) => {
+    const orderData = {
+        user: values,
+        basket: store.basket,
+    };
+    console.log(orderData);
+    store.clearBasket();
+    router.push({ path: localePath('/thanks') });
+};
 </script>
