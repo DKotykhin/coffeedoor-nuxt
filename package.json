@@ -27,6 +27,8 @@
     "@types/js-cookie": "^3.0.6",
     "@vee-validate/nuxt": "^4.12.6",
     "@vueuse/nuxt": "^10.9.0",
+    "mapbox-gl": "^3.2.0",
+    "nuxt-mapbox": "^1.5.9",
     "nuxt-swiper": "^1.2.2",
     "prisma": "^5.10.2"
   }
