@@ -4,7 +4,7 @@
         <form @submit="onSubmit" class='w-full flex flex-col gap-2 px-0 md:px-6'>
             <FormInputText name="email" :placeholder="$t('auth.emailPlaceholder')" :label="$t('auth.email')" />
             <FormInputPassword name="password" :placeholder="$t('auth.passwordPlaceholder')" :label="$t('auth.password')" />
-            <UButton block size='lg' type='submit' icon="i-heroicons-lock-open" class='mt-6'>
+            <UButton :loading='loading' block size='lg' type='submit' icon="i-heroicons-lock-open" class='mt-6'>
                 {{ $t('auth.signIn') }}
             </UButton>
         </form>
@@ -29,7 +29,9 @@ import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { signInValidationSchema } from '@/validation/userValidation';
 import { useUserStore } from '~/stores/userStore';
-import Cookies from 'js-cookie';
+const cookie = useCookie('token')
+
+const loading = ref(false);
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -44,14 +46,16 @@ const { handleSubmit } = useForm({
 });
 
 const onSubmit = handleSubmit(async values => {
+    loading.value = true;
     const user = await $fetch('/api/user/sign-in', {
         method: 'POST',
         body: values,
     });
     userStore.addUser(user.user);
     if (user.token) {
-        Cookies.set('token', user.token);
-        router.push({ path: localePath('/') });
+        cookie.value = user.token;
+        await router.push({ path: localePath('/') });
     }
+    loading.value = false;
 });
 </script>

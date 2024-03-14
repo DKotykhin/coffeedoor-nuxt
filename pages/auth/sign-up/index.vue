@@ -11,4 +11,7 @@ useSeoMeta({
     ogImage: "https://coffeedoor-nuxt.vercel.app/background.webp",
     ogTitle: "Сторінка для реєстрації нового користувача",
 });
+definePageMeta({
+    middleware: ['auth'],
+})
 </script>

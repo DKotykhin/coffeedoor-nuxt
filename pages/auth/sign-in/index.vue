@@ -11,4 +11,7 @@ useSeoMeta({
     ogImage: "https://coffeedoor-nuxt.vercel.app/background.webp",
     ogTitle: "Сторінка для входу в особистий кабінет",
 });
+definePageMeta({
+    middleware: ['auth'],
+})
 </script>

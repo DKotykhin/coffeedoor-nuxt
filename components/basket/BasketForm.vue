@@ -12,7 +12,7 @@
                 { label: $t('basket.pickup'), value: DeliveryWay.PICKUP },
                 { label: $t('basket.delivery'), value: DeliveryWay.DELIVERY },
             ]" />
-            <UButton block size='lg' type='submit' icon="i-heroicons-shopping-bag" class='mt-2 mb-6'>
+            <UButton :loading='loading' block size='lg' type='submit' icon="i-heroicons-shopping-bag" class='mt-2 mb-6'>
                 {{ $t('basket.submit') }}
             </UButton>
         </form>
@@ -25,6 +25,10 @@ import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { basketFormValidationSchema } from '@/validation/basketValidation';
 import { useUserStore } from '~/stores/userStore';
+
+defineProps({
+    loading: Boolean,
+});
 
 const userStore = useUserStore();
 

@@ -11,7 +11,7 @@ export default {
         link_22: 'Мапа',
         link_23: 'Контакти',
         signIn: 'Увійти',
-        logout: 'Вихід',
+        signOut: 'Вихід',
         profile: 'Кабінет',
         adminPanel: 'Адмін панель',
         addPhone: 'Додати телефон',

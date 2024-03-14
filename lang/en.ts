@@ -11,7 +11,7 @@ export default {
         link_22: 'Map',
         link_23: 'Contacts',
         signIn: 'Sign in',
-        logout: 'Log out',
+        signOut: 'Log out',
         profile: 'Profile',
         adminPanel: 'Admin panel',
         addPhone: 'Add mobile phone',
@@ -59,7 +59,7 @@ export default {
     about: {
         title: 'About us',
         paragraph_1:
-            "The peculiarity of CoffeeDOOR Brewbar & Coffeeshop is in a holistic approach, where everything matters. When preparing coffee, every detail is matters - this is what the slogan of the coffeebar says, which is intertwined with one of the main values ​​of the brand - 'Our coffee - Everything matters', which we successfully confirm. The basis of our business is in a systematic approach, in the detail of the described business processes, in the distribution of the best coffee equipment, roasting Specialty level coffee beans, in a unique barista training system and a quality control system.",
+            "The peculiarity of CoffeeDOOR BrewBar & Coffeeshop is in a holistic approach, where everything matters. When preparing coffee, every detail is matters - this is what the slogan of the coffeeBar says, which is intertwined with one of the main values ​​of the brand - 'Our coffee - Everything matters', which we successfully confirm. The basis of our business is in a systematic approach, in the detail of the described business processes, in the distribution of the best coffee equipment, roasting Specialty level coffee beans, in a unique barista training system and a quality control system.",
         paragraph_2:
             'In our coffee houses you will always feel the atmosphere of joy and kindness. We value the taste and time of our guests. We know the name of a regular guest, his habits and favorite drink.',
         subtitle: 'We are:',
@@ -77,7 +77,7 @@ export default {
         button: 'Main Page',
     },
     menu: {
-        title: 'Coffeebar menu',
+        title: 'CoffeeBar menu',
         subtitle: 'we offer freshly roasted coffee drinks',
         currency: ' uah',
         button: 'Main Page',

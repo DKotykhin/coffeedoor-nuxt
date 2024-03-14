@@ -6,7 +6,7 @@
             <UButton :to="localePath('/')" size='lg' class='my-4'>
                 {{ $t("basket.back") }}
             </UButton>
-            <BasketForm @submit-event='submitForm' />
+            <BasketForm @submit-event='submitForm' :loading='loading' />
         </div>
         <div v-else class='flex flex-col items-center gap-4'>
             <p class='text-4xl'>🥹</p>
@@ -30,7 +30,10 @@ const basketStore = useBasketStore();
 
 const basket = computed(() => basketStore.basket);
 
+const loading = ref(false);
+
 const submitForm = async (values: BasketFormTypes) => {
+    loading.value = true;
     const orderData = {
         userFormData: values,
         basketData: basketStore.basket,
@@ -43,7 +46,8 @@ const submitForm = async (values: BasketFormTypes) => {
     });
     if (status?.status) {
         basketStore.clearBasket();
-        router.push({ path: localePath('/thanks') });
+        await router.push({ path: localePath('/thanks') });
     }
+    loading.value = false;
 };
 </script>
