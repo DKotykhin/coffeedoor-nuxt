@@ -26,5 +26,5 @@ import type { StoreItem } from '@prisma/client';
 const { locale } = useI18n();
 const language_code = languageCode(locale.value);
 
-const { data: categories, pending } = await useAsyncData('store', () => $fetch(`/api/store?language_code=${language_code}`));
+const { data: categories, pending } = await useAsyncData('store', () => $fetch(`/api/store/store?language_code=${language_code}`));
 </script>

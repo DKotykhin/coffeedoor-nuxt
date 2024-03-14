@@ -20,20 +20,30 @@
 import { useBasketStore } from '~/stores/basketStore';
 import { useRouter } from 'vue-router';
 import type { BasketFormTypes } from '~/validation/basketValidation';
+import { useUserStore } from '~/stores/userStore';
+
+const userStore = useUserStore();
 
 const localePath = useLocalePath();
-const router = useRouter()
-const store = useBasketStore();
+const router = useRouter();
+const basketStore = useBasketStore();
 
-const basket = computed(() => store.basket);
+const basket = computed(() => basketStore.basket);
 
-const submitForm = (values: BasketFormTypes) => {
+const submitForm = async (values: BasketFormTypes) => {
     const orderData = {
-        user: values,
-        basket: store.basket,
+        userFormData: values,
+        basketData: basketStore.basket,
+        userId: userStore.user?.id,
     };
     console.log(orderData);
-    store.clearBasket();
-    router.push({ path: localePath('/thanks') });
+    const status = await $fetch('/api/store/send-order', {
+        method: 'POST',
+        body: orderData,
+    });
+    if (status?.status) {
+        basketStore.clearBasket();
+        router.push({ path: localePath('/thanks') });
+    }
 };
 </script>

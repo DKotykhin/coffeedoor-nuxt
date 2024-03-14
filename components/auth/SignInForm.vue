@@ -24,12 +24,15 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { signInValidationSchema } from '@/validation/userValidation';
 import { useUserStore } from '~/stores/userStore';
+import Cookies from 'js-cookie';
 
-const store = useUserStore();
+const userStore = useUserStore();
+const router = useRouter();
 
 const localePath = useLocalePath();
 const { handleSubmit } = useForm({
@@ -45,7 +48,10 @@ const onSubmit = handleSubmit(async values => {
         method: 'POST',
         body: values,
     });
-    console.log(user.token);
-    store.addUser(user.user);
+    userStore.addUser(user.user);
+    if (user.token) {
+        Cookies.set('token', user.token);
+        router.push({ path: localePath('/') });
+    }
 });
 </script>

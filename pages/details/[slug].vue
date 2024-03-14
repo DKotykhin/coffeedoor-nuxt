@@ -19,7 +19,7 @@
 const route = useRoute();
 const slug = ref(route.params.slug);
 
-const { data, pending } = await useAsyncData('details', () => $fetch(`/api/item-by-slug?slug=${slug.value}`));
+const { data, pending } = await useAsyncData('details', () => $fetch(`/api/store/item-by-slug?slug=${slug.value}`));
 
 useSeoMeta({
     title: `CoffeeDoor | ${data.value?.storeItem.title || "Сторінка товара"}`,

@@ -24,12 +24,15 @@ import { DeliveryWay } from '@prisma/client/wasm';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { basketFormValidationSchema } from '@/validation/basketValidation';
+import { useUserStore } from '~/stores/userStore';
+
+const userStore = useUserStore();
 
 const { handleSubmit } = useForm({
     validationSchema: toTypedSchema(basketFormValidationSchema),
     initialValues: {
-        userName: '',
-        phone: '',
+        userName: userStore.user?.userName || '',
+        phone: userStore.user?.phone || '',
         comment: '',
         deliveryWay: DeliveryWay.PICKUP,
     },

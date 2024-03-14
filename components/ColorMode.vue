@@ -1,6 +1,6 @@
 <template>
     <ClientOnly>
-        <button @click='toggleMode' class='absolute top-1 right-6'>
+        <button @click='toggleMode' class='absolute top-4 right-6'>
             <Icon v-if="colorMode.value === 'dark'" name="mdi:moon-waning-crescent" size='20' />
             <Icon v-if="colorMode.value === 'light'" name="mdi:weather-sunny" size='20' />
             <Icon v-if="colorMode.value === 'system'" name="mdi:sun-angle-outline" />
