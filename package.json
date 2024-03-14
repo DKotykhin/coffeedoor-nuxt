@@ -12,8 +12,13 @@
   "dependencies": {
     "@nuxt/ui": "^2.14.2",
     "@prisma/client": "^5.10.2",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
     "@vee-validate/zod": "^4.12.6",
+    "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
     "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.10.3",
     "pinia": "^2.1.7",
     "vue": "^3.4.19",

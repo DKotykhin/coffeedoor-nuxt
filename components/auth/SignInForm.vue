@@ -27,6 +27,9 @@
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { signInValidationSchema } from '@/validation/userValidation';
+import { useUserStore } from '~/stores/userStore';
+
+const store = useUserStore();
 
 const localePath = useLocalePath();
 const { handleSubmit } = useForm({
@@ -37,7 +40,12 @@ const { handleSubmit } = useForm({
     },
 });
 
-const onSubmit = handleSubmit(values => {
-    console.log(values);
+const onSubmit = handleSubmit(async values => {
+    const user = await $fetch('/api/user/sign-in', {
+        method: 'POST',
+        body: values,
+    });
+    console.log(user.token);
+    store.addUser(user.user);
 });
 </script>
