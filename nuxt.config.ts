@@ -13,7 +13,6 @@ export default defineNuxtConfig({
         'nuxt-swiper',
         '@vee-validate/nuxt',
         '@pinia/nuxt',
-        'nuxt-mapbox',
     ],
     app: {
         head: {
@@ -75,8 +74,5 @@ export default defineNuxtConfig({
                 ),
             },
         },
-    },
-    mapbox: {
-        accessToken: process.env.MAPBOX_TOKEN,
     },
 });

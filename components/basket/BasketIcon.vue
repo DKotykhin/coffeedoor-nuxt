@@ -22,13 +22,13 @@ watch(totalQuantity, (newValue, oldValue) => {
         showAnimation.value = true;
         setTimeout(() => {
             showAnimation.value = false;
-        }, 1000);
+        }, 500);
     }
 });
 </script>
 
 <style scoped>
 .added-animation {
-    transition: all 0.5s ease;
+    transition: all 0.3s ease-in-out;
 }
 </style>
