@@ -120,4 +120,9 @@ export default {
         details: 'Delivery details',
         back: 'Back to shopping',
     },
+    profile: {
+        title: 'Orders history',
+        total: 'Total orders: ',
+        empty: 'No orders yet',
+    }, 
 };

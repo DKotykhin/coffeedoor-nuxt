@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-
 useSeoMeta({
   title: "CoffeeDoor | Головна",
   description: "CoffeeDOOR – це кавовий бренд, який по'єднує в собі свіжообсмажену каву рівня Speciality, кращі кавові технології, стильний дизайнерський інтер'єр, швидкий і дружній сервіс",

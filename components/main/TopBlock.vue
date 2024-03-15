@@ -2,7 +2,7 @@
     <ClientOnly>
         <section class='bg_image flex flex-col items-center w-full text-white dark:text-grey-200 h-[500px] md:h-[700px]'>
             <ColorMode />
-            <TheHeader />
+            <MainHeader />
             <transition name="fade">
                 <div v-if="show" class='flex flex-col items-center h-full text-center px-2 mt-24'>
                     <h1 class='text-5xl min-[360px]:text-6xl sm:text-8xl md:text-9xl lg:text-[150px] mb-6 font-bold'>

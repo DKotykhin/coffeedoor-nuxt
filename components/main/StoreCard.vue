@@ -35,8 +35,8 @@
 <script setup lang="ts">
 import type { StoreItem } from '@prisma/client';
 import { useBasketStore } from '~/stores/basketStore';
-const store = useBasketStore()
 
+const store = useBasketStore();
 const localePath = useLocalePath();
 
 defineProps({

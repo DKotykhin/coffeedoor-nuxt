@@ -11,7 +11,10 @@ import type { StoreItem } from '@prisma/client';
 
 defineProps({
     items: Array as PropType<StoreItem[]>,
-    categoryTitle: String
+    categoryTitle: { 
+        type: String, 
+        required: true 
+    }
 });
 
 </script>

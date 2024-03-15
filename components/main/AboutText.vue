@@ -1,6 +1,6 @@
 <template>
     <block-wrapper>
-        <h4 class='text-3xl md:text-[40px] max-w-[700px] text-center font-bold tracking-wide'>
+        <h4 class='text-3xl md:text-[40px] max-w-[700px] text-center font-bold tracking-wide' id='about'>
             Our coffee &#8211; Everything matters
         </h4>
         <div class='max-w-[900px] text-grey dark:text-grey-200 font-light md:text-lg my-6 md:mb-12'>
