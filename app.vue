@@ -6,11 +6,10 @@
 </template>
 
 <script setup lang="ts">
-import { useBasketStore } from '~/stores/basketStore';
+const basketStore = useBasketStore();
 
-const store = useBasketStore()
 onMounted(() => {
-  store.initializeBasket()
+  basketStore.initializeBasket()
 })
 </script>
 

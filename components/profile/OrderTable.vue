@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import type { OrderItem } from '@prisma/client';
 import { format } from 'date-fns';
+import type { OrderItem } from '@prisma/client';
 import type { UserOrdersFull } from '~/server/services/user/getUserOrders';
 
 defineProps({

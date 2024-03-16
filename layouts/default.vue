@@ -7,7 +7,6 @@
 
 <script setup lang='ts'>
 import type { User } from '@prisma/client';
-import { useUserStore } from '~/stores/userStore';
 
 const cookie = useCookie('token');
 const userStore = useUserStore();

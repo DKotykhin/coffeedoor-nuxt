@@ -12,7 +12,7 @@
             <ProfileOrderTable :orders='res.orders' />
             <UPagination v-model="page" :page-count="ordersOnPage" :total="res.totalCount" />
         </div>
-        <p v-else>
+        <p v-else-if='res?.totalCount === 0'>
             {{ $t('profile.empty') }}
         </p>
     </section>
@@ -21,8 +21,10 @@
 <script setup lang="ts">
 import type { UserOrdersProps } from '~/server/services/user/getUserOrders';
 
+const router = useRouter();
+const { path, query } = router.currentRoute.value;
 const ordersOnPage = ref(2)
-const page = ref(1)
+const page = ref(router.currentRoute.value.query.page ? Number(router.currentRoute.value.query.page) : 1);
 const res = ref()
 const isLoading = ref(false);
 
@@ -30,6 +32,9 @@ const fetchOrders = async (page: number, limit: number): Promise<UserOrdersProps
     isLoading.value = true;
     try {
         const response = await $fetch(`/api/user/get-user-orders?limit=${limit}&page=${page}`);
+        if (true) {
+            router.push({ path, query: { ...query, page } });
+        }
         return response as unknown as UserOrdersProps;
     } catch (error) {
         console.error('Error fetching orders:', error);
@@ -38,7 +43,9 @@ const fetchOrders = async (page: number, limit: number): Promise<UserOrdersProps
         isLoading.value = false;
     }
 };
-res.value = await fetchOrders(page.value, ordersOnPage.value);
+onMounted(async () => {
+    res.value = await fetchOrders(page.value, ordersOnPage.value);
+});
 const hasOrders = computed(() => res.value?.totalCount > 0);
 
 watch(page, async (newPage) => {
