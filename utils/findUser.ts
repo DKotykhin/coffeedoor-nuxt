@@ -9,6 +9,9 @@ export const findUserByEmail = async (email: string) => {
                 emailConfirm: {
                     select: {
                         verified: true,
+                        expiredAt: true,
+                        id: true,
+                        token: true,
                     },
                 },
             },

@@ -86,6 +86,7 @@ export default {
     auth: {
         title_1: 'Створити кабінет',
         title_2: 'Вхід до кабінету',
+        title_3: 'Підтвердження пошти',
         userName: "Ваше ім'я",
         userNamePlaceholder: "Введіть ім'я...",
         email: 'Ваша пошта',
@@ -95,6 +96,7 @@ export default {
         forgotPassword: 'Забули пароль?',
         signIn: 'Увійти',
         signUp: 'Зареєструватися',
+        resendEmail: 'Відправити повторно',
         message_1: 'Є особистий кабінет?',
         message_2: 'як користувач',
         message_3: 'Немає особистого кабінета?',

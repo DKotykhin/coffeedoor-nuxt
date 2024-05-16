@@ -86,6 +86,7 @@ export default {
     auth: {
         title_1: 'Create an account',
         title_2: 'Welcome back',
+        title_3: 'Email confirmation',
         userName: 'Name',
         userNamePlaceholder: 'Enter your name...',
         email: 'Email',
@@ -95,6 +96,7 @@ export default {
         forgotPassword: 'Forgot password?',
         signIn: 'Sign in',
         signUp: 'Sign up',
+        resendEmail: 'Resend email',
         message_1: 'Already have an account?',
         message_2: 'as a user',
         message_3: "Don't have an account?",
