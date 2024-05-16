@@ -21,6 +21,7 @@ export default {
         menu: "Меню кав'ярні",
         coffeeBar: "Меню кав'ярні",
         basket: 'Кошик',
+        signOutMessage: 'Ви успішно вийшли з системи',
     },
     footer: {
         address: 'м.Харків, вул. Пушкінська, 50/52',

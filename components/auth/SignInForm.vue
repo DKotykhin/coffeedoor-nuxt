@@ -27,16 +27,17 @@
 import { useRouter } from 'vue-router';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
+
 import { signInValidationSchema } from '@/validation/userValidation';
 import { useUserStore } from '~/stores/userStore';
-const cookie = useCookie('token')
 
 const loading = ref(false);
-
+const toast = useToast();
+const cookie = useCookie('token');
 const userStore = useUserStore();
 const router = useRouter();
-
 const localePath = useLocalePath();
+
 const { handleSubmit } = useForm({
     validationSchema: toTypedSchema(signInValidationSchema),
     initialValues: {
@@ -45,17 +46,25 @@ const { handleSubmit } = useForm({
     },
 });
 
-const onSubmit = handleSubmit(async values => {
+const onSubmit = handleSubmit(async values => {       
     loading.value = true;
-    const user = await $fetch('/api/user/sign-in', {
+    const { data, error } = await $fetch('/api/user/sign-in', {
         method: 'POST',
         body: values,
     });
-    userStore.addUser(user.user);
-    if (user.token) {
-        cookie.value = user.token;
+    loading.value = false;
+    if (error) {
+        toast.add({
+            title: 'Sign In',
+            description: error.message,
+            color: 'red',
+        });
+        return;
+    }
+    userStore.addUser(data.user);
+    if (data.token) {
+        cookie.value = data.token;
         await router.push({ path: localePath('/') });
     }
-    loading.value = false;
 });
 </script>

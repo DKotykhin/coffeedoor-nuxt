@@ -1,14 +1,12 @@
 import { H3Event } from 'h3';
 
-import { signIn } from '../../services/user/signIn';
+import { signUp } from '../../services/user/signUp';
 
 export default defineEventHandler(async (event: H3Event) => {
     const requestData = await readBody(event);
     try {
-        const data = await signIn(requestData);
-        return {
-            data
-        };
+        const data = await signUp(requestData);
+        return { data };
     } catch (error: any) {
         return {
             error: {

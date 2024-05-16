@@ -1,4 +1,4 @@
-import { H3Event, parseCookies } from 'h3';
+import { H3Event, parseCookies, createError } from 'h3';
 
 import { getUserOrders } from '../../services/user/getUserOrders';
 
@@ -7,7 +7,10 @@ export default defineEventHandler(async (event: H3Event) => {
     const cookies = parseCookies(event);
     const token = cookies?.token;
     if (!token) {
-        return null;
+        throw createError({
+            statusCode: 401,
+            statusMessage: 'Unauthorized',        
+        });
     }
 
     return await getUserOrders({

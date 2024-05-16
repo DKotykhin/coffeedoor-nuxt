@@ -21,6 +21,7 @@ export default {
         menu: 'Coffee Bar',
         coffeeBar: 'Coffee Bar',
         basket: 'Basket',
+        signOutMessage: 'You have successfully logged out',
     },
     footer: {
         address: 'Kharkiv, Pushkinskaya str., 50/52',

@@ -1,11 +1,11 @@
 import { H3Event } from 'h3';
 
-import { signIn } from '../../services/user/signIn';
+import { verifyEmail } from '../../services/user/verifyEmail';
 
 export default defineEventHandler(async (event: H3Event) => {
-    const requestData = await readBody(event);
+    const query = getQuery(event);
     try {
-        const data = await signIn(requestData);
+        const data = await verifyEmail({ token: query.token as string });
         return {
             data
         };

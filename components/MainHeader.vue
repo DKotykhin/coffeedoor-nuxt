@@ -6,7 +6,8 @@
         </NuxtLink>
         <div class='flex gap-4 md:gap-8 items-center'>
             <UDropdown :items="pageItems" :popper="{ placement: 'bottom-start' }">
-                <UButton variant='ghost' :label="$t('header.title_1')" trailing-icon="i-heroicons-chevron-down-20-solid" />
+                <UButton variant='ghost' :label="$t('header.title_1')"
+                    trailing-icon="i-heroicons-chevron-down-20-solid" />
             </UDropdown>
             <div class='flex gap-4'>
                 <NuxtLink v-for="local in locales" :key="local.code" :to="switchLocalePath(local.code)"
@@ -14,13 +15,15 @@
                     {{ local.name }}
                 </NuxtLink>
             </div>
-            <NuxtLink v-if='!userStore.user' :to="localePath('/auth/sign-in')" class='hover:underline'>
-                {{ $t('header.signIn') }}
-            </NuxtLink>
-            <UDropdown v-else :items="userItems" :popper="{ placement: 'bottom-start' }">
-                <UAvatar :src="userStore.user.avatar || ''" :alt="userStore.user.userName || 'avatar'"
-                    icon="i-heroicons-user-16-solid" />
-            </UDropdown>
+            <ClientOnly>
+                <NuxtLink v-if='!userStore.user' :to="localePath('/auth/sign-in')" class='hover:underline'>
+                    {{ $t('header.signIn') }}
+                </NuxtLink>
+                <UDropdown v-else :items="userItems" :popper="{ placement: 'bottom-start' }">
+                    <UAvatar :src="userStore.user.avatar || ''" :alt="userStore.user.userName || 'avatar'"
+                        icon="i-heroicons-user-16-solid" />
+                </UDropdown>
+            </ClientOnly>
         </div>
     </header>
 </template>
@@ -35,10 +38,16 @@ const switchLocalePath = useSwitchLocalePath();
 const userStore = useUserStore();
 const cookie = useCookie('token');
 const router = useRouter();
+const toast = useToast();
 
 const signOut = () => {
     userStore.removeUser();
     cookie.value = '';
+    toast.add({
+        title: 'Sign Out',
+        description: t('header.signOutMessage'),
+        color: 'grey'
+    });
 };
 
 const userItems = [

@@ -1,7 +1,7 @@
 import { db } from '@/libs/db';
 import { ApiError } from '@/handlers/apiError';
 import { OrderItem, UserOrder } from '@prisma/client';
-import { checkAuth } from '~/utils/checkAuth';
+import { checkAuth } from '~/utils/_index';
 
 export interface UserOrdersFull extends UserOrder {
     orderItems: OrderItem[];

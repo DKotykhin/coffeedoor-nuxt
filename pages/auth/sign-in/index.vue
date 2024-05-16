@@ -7,6 +7,7 @@
 <script setup>
 const userStore = useUserStore();
 const router = useRouter();
+
 useSeoMeta({
     title: "CoffeeDoor | Логін",
     description: "Сторінка для входу в особистий кабінет",
@@ -15,8 +16,8 @@ useSeoMeta({
 });
 definePageMeta({
     middleware: ['auth'],
-})
-onMounted(() => {
+});
+watchEffect(() => {
     if (userStore.user) {
         router.push({ path: '/' });
     }

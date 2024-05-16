@@ -21,4 +21,9 @@ export const useUserStore = defineStore('user', {
             }
         },
     },
+    getters: {
+        isLoggedIn(): boolean {
+            return !!this.user;
+        },
+    },
 });

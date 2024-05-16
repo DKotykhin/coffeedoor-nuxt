@@ -25,11 +25,17 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
+
 import { signUpValidationSchema } from '@/validation/userValidation';
 
+const loading = ref(false);
+const toast = useToast();
+const router = useRouter();
 const localePath = useLocalePath();
+
 const { handleSubmit } = useForm({
     validationSchema: toTypedSchema(signUpValidationSchema),
     initialValues: {
@@ -39,7 +45,25 @@ const { handleSubmit } = useForm({
     },
 });
 
-const onSubmit = handleSubmit(values => {
-    console.log(values);
+const onSubmit = handleSubmit(async values => {
+    loading.value = true;
+    const { error } = await $fetch('/api/user/sign-up', {
+        method: 'POST',
+        body: values,
+    });
+    loading.value = false;
+    if (error) {
+        toast.add({
+            title: 'Sign Up',
+            description: error.message,
+            color: 'red',
+        });
+        return;
+    }
+    toast.add({
+        title: 'Sign Up',
+        description: 'Email verification link has been sent to your email. Please verify your email to sign in.',
+    });
+    await router.push({ path: localePath('/auth/sign-in') });
 });
 </script>

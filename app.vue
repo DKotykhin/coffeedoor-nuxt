@@ -3,6 +3,7 @@
     <NuxtPage />
     <TheFooter />
   </NuxtLayout>
+  <UNotifications />
 </template>
 
 <script setup lang="ts">
