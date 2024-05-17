@@ -46,7 +46,8 @@ const signOut = () => {
     toast.add({
         title: 'Sign Out',
         description: t('header.signOutMessage'),
-        color: 'grey'
+        color: 'grey',
+        icon: 'i-heroicons-arrow-right-on-rectangle',
     });
 };
 

@@ -5,7 +5,7 @@
             <FormInputText name="userName" :placeholder="$t('auth.userNamePlaceholder')" :label="$t('auth.userName')" />
             <FormInputText name="email" :placeholder="$t('auth.emailPlaceholder')" :label="$t('auth.email')" />
             <FormInputPassword name="password" :placeholder="$t('auth.passwordPlaceholder')" :label="$t('auth.password')" />
-            <UButton block size='lg' type='submit' icon="i-heroicons-pencil-square" class='mt-6'>
+            <UButton :loading='loading' block size='lg' type='submit' icon="i-heroicons-pencil-square" class='mt-6'>
                 {{ $t('auth.signUp') }}
             </UButton>
         </form>
@@ -57,12 +57,15 @@ const onSubmit = handleSubmit(async values => {
             title: 'Sign Up',
             description: error.message,
             color: 'red',
+            icon: 'i-heroicons-x-circle',
         });
         return;
     }
     toast.add({
         title: 'Sign Up',
         description: 'Email verification link has been sent to your email. Please verify your email to sign in.',
+        color: 'green',
+        icon: 'i-heroicons-check-circle',
     });
     await router.push({ path: localePath('/auth/sign-in') });
 });

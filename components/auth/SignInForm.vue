@@ -4,6 +4,7 @@
         <form @submit="onSubmit" class='w-full flex flex-col gap-2 px-0 md:px-6'>
             <FormInputText name="email" :placeholder="$t('auth.emailPlaceholder')" :label="$t('auth.email')" />
             <FormInputPassword name="password" :placeholder="$t('auth.passwordPlaceholder')" :label="$t('auth.password')" />
+            <p @click='forgotPassword' class='w-full flex justify-end text-sm text-mint cursor-pointer'>forgot password?</p>
             <UButton :loading='loading' block size='lg' type='submit' icon="i-heroicons-lock-open" class='mt-6'>
                 {{ $t('auth.signIn') }}
             </UButton>
@@ -58,6 +59,7 @@ const onSubmit = handleSubmit(async values => {
             title: 'Sign In',
             description: error.message,
             color: 'red',
+            icon: 'i-heroicons-x-circle',
         });
         return;
     }
@@ -67,4 +69,8 @@ const onSubmit = handleSubmit(async values => {
         await router.push({ path: localePath('/') });
     }
 });
+
+const forgotPassword = () => {
+    router.push({ path: localePath('/auth/reset-password') });
+};
 </script>

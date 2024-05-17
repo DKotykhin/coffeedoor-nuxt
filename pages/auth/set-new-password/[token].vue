@@ -1,6 +1,6 @@
 <template>
     <main>
-        <AuthSignInForm />
+        <AuthSetNewPassword />
     </main>
 </template>
 
@@ -10,10 +10,8 @@ const router = useRouter();
 const localePath = useLocalePath();
 
 useSeoMeta({
-    title: "CoffeeDoor | Логін",
-    description: "Сторінка для входу в особистий кабінет",
-    ogImage: "https://coffeedoor-nuxt.vercel.app/background.webp",
-    ogTitle: "Сторінка для входу в особистий кабінет",
+    title: "CoffeeDoor | Встановлення паролю",
+    description: "Сторінка встановлення паролю",
 });
 definePageMeta({
     middleware: ['auth'],

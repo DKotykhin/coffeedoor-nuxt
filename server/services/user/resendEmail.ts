@@ -20,7 +20,7 @@ export const resendEmail = async ({ email }: { email: string }): Promise<{ statu
                     <h4>If you don't try to login or register, ignore this mail</h4>
                     <hr/>
                     <br/>
-                    <a href='${process.env.FRONTEND_URL}/confirm-email/${token}'>Link for email confirmation</a>
+                    <a href='${process.env.FRONTEND_URL}auth/confirm-email/${token}'>Link for email confirmation</a>
                 `,
         });
         await db.emailConfirm.update({
@@ -40,7 +40,7 @@ export const resendEmail = async ({ email }: { email: string }): Promise<{ statu
                     <h4>If you don't try to login or register, ignore this mail</h4>
                     <hr/>
                     <br/>
-                    <a href='${process.env.FRONTEND_URL}/confirm-email/${user.emailConfirm?.token}'>Link for email confirmation</a>
+                    <a href='${process.env.FRONTEND_URL}/auth/confirm-email/${user.emailConfirm?.token}'>Link for email confirmation</a>
                 `,
         });
     }

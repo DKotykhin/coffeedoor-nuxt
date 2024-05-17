@@ -1,12 +1,15 @@
 <template>
     <form-wrapper>
-        <FormHeader :title="$t('auth.title_3')" />
+        <FormHeader :title="$t('auth.title_4')" />
         <form @submit="onSubmit" class='w-full flex flex-col gap-2 px-0 md:px-6'>
             <FormInputText name="email" :placeholder="$t('auth.emailPlaceholder')" :label="$t('auth.email')" />
             <UButton :loading='loading' type='submit' block size='lg' icon="i-heroicons-envelope" class='mt-6'>
-                {{ $t('auth.resendEmail') }}
+                {{ $t('auth.passwordRecovery') }}
             </UButton>
         </form>
+        <NuxtLink :to="localePath('/')" class='text-mint uppercase font-medium hover:underline mt-2 text-center'>
+            {{ $t("auth.button") }}
+        </NuxtLink>
     </form-wrapper>
 </template>
 
@@ -16,10 +19,8 @@ import { toTypedSchema } from '@vee-validate/zod';
 
 import { emailValidationSchema } from '@/validation/userValidation';
 
-const route = useRoute();
-const router = useRouter();
-const localePath = useLocalePath();
 const toast = useToast();
+const localePath = useLocalePath();
 
 const loading = ref(false);
 
@@ -30,16 +31,16 @@ const { handleSubmit } = useForm({
     },
 });
 
-const onSubmit = handleSubmit(async value => {       
+const onSubmit = handleSubmit(async value => {  
     loading.value = true;
-    const { data, error } = await $fetch('/api/user/resend-email', { 
+    const { error } = await $fetch('/api/user/reset-password', { 
         method: 'POST',
         body: value, 
     });
     loading.value = false;
     if (error) {
         toast.add({
-            title: 'Resend Email Error',
+            title: 'Password Recovery Error',
             description: error.message,
             color: 'red',
             icon: 'i-heroicons-x-circle',
@@ -47,25 +48,10 @@ const onSubmit = handleSubmit(async value => {
         return;
     }
     toast.add({
-        title: 'Successfully resend Email',
-        description: data.message,
+        title: 'Password Recovery Link',
+        description: 'Successfully send link for password recovery',
         color: 'green',
         icon: 'i-heroicons-check-circle',
     });
-});
-
-onMounted(async () => {
-    if (!route.params.token) return;
-    const { data, error } = await $fetch(`/api/user/verify-email?token=${route.params.token}`);
-    if (error) {
-        toast.add({
-            title: 'Verify Email Error',
-            description: error.message,
-            color: 'red',
-            icon: 'i-heroicons-x-circle',
-        });
-        return;
-    }
-    if (data?.status) await router.push({ path: localePath('/') });
 });
 </script>
