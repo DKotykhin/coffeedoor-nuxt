@@ -49,7 +49,7 @@ const onSubmit = handleSubmit(async value => {
     toast.add({
         title: 'Successfully resend Email',
         description: data.message,
-        color: 'green',
+        color: 'mint',
         icon: 'i-heroicons-check-circle',
     });
 });

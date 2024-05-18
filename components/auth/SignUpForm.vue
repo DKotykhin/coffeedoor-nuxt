@@ -64,7 +64,7 @@ const onSubmit = handleSubmit(async values => {
     toast.add({
         title: 'Sign Up',
         description: 'Email verification link has been sent to your email. Please verify your email to sign in.',
-        color: 'green',
+        color: 'mint',
         icon: 'i-heroicons-check-circle',
     });
     await router.push({ path: localePath('/auth/sign-in') });

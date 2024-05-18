@@ -56,7 +56,7 @@ const onSubmit = handleSubmit(async value => {
     toast.add({
         title: 'Set New Password Success',
         description: 'Successfully set new password',
-        color: 'green',
+        color: 'mint',
         icon: 'i-heroicons-check-circle',
     });
     await router.push({ path: localePath('/sign-in') });

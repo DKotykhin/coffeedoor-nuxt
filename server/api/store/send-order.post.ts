@@ -5,5 +5,10 @@ import { sendOrder } from '../../services/store/sendOrder';
 export default defineEventHandler(async (event: H3Event) => {
     const orderData = await readBody(event);
 
-    return await sendOrder(orderData);
+    try {
+        return await sendOrder(orderData);
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
 });

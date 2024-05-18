@@ -12,10 +12,14 @@ export default defineEventHandler(async (event: H3Event) => {
             statusMessage: 'Unauthorized',        
         });
     }
-
+    try {
     return await getUserOrders({
         limit: query.limit ? parseInt(query.limit.toString()) : null,
         page: query.page ? parseInt(query.page.toString()) : null,
         token,
     });
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
 });

@@ -8,6 +8,10 @@ export default defineEventHandler(async (event: H3Event) => {
     if (!token) {
         return null;
     }
-
-    return await getUserByToken(token);
+    try {
+        return await getUserByToken(token);
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
 });

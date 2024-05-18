@@ -50,7 +50,7 @@ const onSubmit = handleSubmit(async value => {
     toast.add({
         title: 'Password Recovery Link',
         description: 'Successfully send link for password recovery',
-        color: 'green',
+        color: 'mint',
         icon: 'i-heroicons-check-circle',
     });
 });
