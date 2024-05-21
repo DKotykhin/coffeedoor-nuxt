@@ -33,7 +33,6 @@ import { signUpValidationSchema } from '@/validation/userValidation';
 
 const loading = ref(false);
 const toast = useToast();
-const router = useRouter();
 const localePath = useLocalePath();
 
 const { handleSubmit } = useForm({
@@ -67,6 +66,6 @@ const onSubmit = handleSubmit(async values => {
         color: 'mint',
         icon: 'i-heroicons-check-circle',
     });
-    await router.push({ path: localePath('/auth/sign-in') });
+    return navigateTo(localePath('/auth/sign-in'));
 });
 </script>

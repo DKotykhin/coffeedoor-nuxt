@@ -1,24 +1,29 @@
 <template>
     <main>
-        <AuthSetNewPassword />
+        <div v-if='isNotLogged'>
+            <AuthSetNewPassword />
+        </div>
+        <div v-else class='flex w-full justify-center items-center h-screen'>
+            <TheSkeleton /> 
+        </div>
     </main>
 </template>
 
 <script setup>
-const userStore = useUserStore();
-const router = useRouter();
+const { isLoggedIn } = useUserStore();
 const localePath = useLocalePath();
 
 useSeoMeta({
     title: "CoffeeDoor | Встановлення паролю",
     description: "Сторінка встановлення паролю",
 });
-definePageMeta({
-    middleware: ['auth'],
-});
-watchEffect(() => {
-    if (userStore.isLoggedIn) {
-        router.push({ path: localePath('/') });
+
+const isNotLogged = ref(false);
+onMounted(() => {
+    if (isLoggedIn) {
+        return navigateTo(localePath('/'));
+    } else {
+        isNotLogged.value = true;
     }
 });
 </script>

@@ -25,7 +25,6 @@ import { useUserStore } from '~/stores/userStore';
 const userStore = useUserStore();
 
 const localePath = useLocalePath();
-const router = useRouter();
 const basketStore = useBasketStore();
 
 const basket = computed(() => basketStore.basket);
@@ -46,7 +45,7 @@ const submitForm = async (values: BasketFormTypes) => {
     });
     if (status?.status) {
         basketStore.clearBasket();
-        await router.push({ path: localePath('/thanks') });
+        return navigateTo(localePath('/thanks'));
     }
     loading.value = false;
 };

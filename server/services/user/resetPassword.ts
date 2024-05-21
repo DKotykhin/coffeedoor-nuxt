@@ -20,6 +20,7 @@ export const resetPassword = async ({ email }: { email: string }): Promise<{ sta
         subject: 'Reset Password',
         html: `
                 <h2>Please, follow the link to set new password</h2>
+                <h4>The link will expire within <strong>1 hour</strong></h4>
                 <h4>If you don't restore your password ignore this mail</h4>
                 <hr/>
                 <br/>

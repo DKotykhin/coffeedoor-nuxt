@@ -35,6 +35,7 @@ export const signUp = async (signUpData: SignUpTypes): Promise<{ user: User }> =
         subject: 'Verify Email',
         html: `
                 <h2>Please, follow the link to confirm your email</h2>
+                <h4>The link will expire within <strong>1 hour</strong></h4>
                 <h4>If you don't try to login or register, ignore this mail</h4>
                 <hr/>
                 <br/>

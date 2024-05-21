@@ -22,7 +22,6 @@ import { toTypedSchema } from '@vee-validate/zod';
 
 import { setNewPasswordValidationSchema } from '@/validation/userValidation';
 
-const router = useRouter();
 const localePath = useLocalePath();
 const route = useRoute();
 const toast = useToast();
@@ -59,6 +58,6 @@ const onSubmit = handleSubmit(async value => {
         color: 'mint',
         icon: 'i-heroicons-check-circle',
     });
-    await router.push({ path: localePath('/sign-in') });
+    return navigateTo(localePath('/auth/sign-in'));
 });
 </script>

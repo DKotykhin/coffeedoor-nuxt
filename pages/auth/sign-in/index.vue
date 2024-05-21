@@ -1,12 +1,16 @@
 <template>
     <main>
-        <AuthSignInForm />
+        <div v-if='isNotLogged'>
+            <AuthSignInForm />
+        </div>
+        <div v-else class='flex w-full justify-center items-center h-screen'>
+            <TheSkeleton /> 
+        </div>
     </main>
 </template>
 
 <script setup>
-const userStore = useUserStore();
-const router = useRouter();
+const { isLoggedIn } = useUserStore();
 const localePath = useLocalePath();
 
 useSeoMeta({
@@ -15,12 +19,13 @@ useSeoMeta({
     ogImage: "https://coffeedoor-nuxt.vercel.app/background.webp",
     ogTitle: "Сторінка для входу в особистий кабінет",
 });
-definePageMeta({
-    middleware: ['auth'],
-});
-watchEffect(() => {
-    if (userStore.isLoggedIn) {
-        router.push({ path: localePath('/') });
+
+const isNotLogged = ref(false);
+onMounted(() => {
+    if (isLoggedIn) {
+        return navigateTo(localePath('/'));
+    } else {
+        isNotLogged.value = true;
     }
 });
 </script>

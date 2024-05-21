@@ -1,7 +1,7 @@
 <template>
     <UCard class='w-[350px]'>
         <NuxtImg :src="!!item.images[0] ? item.images[0] : '/logo-main.png'" :alt='item.title' :placeholder="[302, 302]"
-            :class="['object-cover', 'rounded-xl', !!item.images[0] ? '' : 'p-16']" />
+            :class="['object-cover', 'rounded-xl', !!item.images[0] ? '' : 'p-16']" sizes='100vw' />
         <div class='flex flex-col gap-2 justify-between h-[250px] mt-2 p-2'>
             <p class='text-grey-800 text-xl'>{{ categoryTitle }} {{ item.title }}</p>
             <div class='flex gap-2'>

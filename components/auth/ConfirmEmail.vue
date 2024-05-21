@@ -17,7 +17,6 @@ import { toTypedSchema } from '@vee-validate/zod';
 import { emailValidationSchema } from '@/validation/userValidation';
 
 const route = useRoute();
-const router = useRouter();
 const localePath = useLocalePath();
 const toast = useToast();
 
@@ -66,6 +65,6 @@ onMounted(async () => {
         });
         return;
     }
-    if (data?.status) await router.push({ path: localePath('/') });
+    if (data?.status) return navigateTo(localePath('/'));
 });
 </script>

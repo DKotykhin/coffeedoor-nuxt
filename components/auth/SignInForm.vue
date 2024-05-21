@@ -66,11 +66,11 @@ const onSubmit = handleSubmit(async values => {
     userStore.addUser(data.user);
     if (data.token) {
         cookie.value = data.token;
-        await router.push({ path: localePath('/') });
+        navigateTo(localePath('/'));
     }
 });
 
 const forgotPassword = () => {
-    router.push({ path: localePath('/auth/reset-password') });
+    return navigateTo(localePath('/auth/reset-password'));
 };
 </script>
