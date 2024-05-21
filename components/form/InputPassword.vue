@@ -11,7 +11,7 @@
     </div>
 </template>
   
-<script setup>
+<script setup lang='ts'>
 import { useField } from 'vee-validate';
 
 const visible = ref(false);

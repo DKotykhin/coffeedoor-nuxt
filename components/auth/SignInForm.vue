@@ -24,7 +24,7 @@
     </form-wrapper>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 import { useRouter } from 'vue-router';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';

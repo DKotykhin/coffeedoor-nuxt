@@ -20,7 +20,7 @@
     </block-wrapper>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 const benefitItems = [
     "itemA", "itemB", "itemC", "itemD", "itemE", "itemF",
 ];
@@ -49,7 +49,6 @@ useIntersectionObserver(
     0% {
         opacity: 0;
     }
-
     100% {
         opacity: 1;
     }

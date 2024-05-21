@@ -9,15 +9,12 @@ export interface StoreItemBySlugProps {
 }
 
 export const getItemBySlug = async (slug: string): Promise<StoreItemBySlugProps> => {
-
     if (!slug) {
         throw ApiError.badRequest('Slug is empty');
     }
-
     const storeItem = await db.storeItem.findUnique({
         where: { slug },
     });
-
     if (!storeItem) {
         throw ApiError.badRequest('Any store items not found');
     }
@@ -34,10 +31,10 @@ export const getItemBySlug = async (slug: string): Promise<StoreItemBySlugProps>
             },
         },
     });
-
     if (!storeCategory) {
         throw ApiError.badRequest('Any store categories not found');
     }
+    
     const copyArr = storeCategory?.storeItems?.slice();
     const itemIndex = copyArr.findIndex((item) => item.slug === storeItem.slug);
     copyArr.splice(itemIndex, 1);

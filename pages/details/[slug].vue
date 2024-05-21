@@ -4,18 +4,13 @@
             <TheSkeleton />
         </div>
         <div v-else class='my-4'>
-            <p>Details Page: {{ slug }}</p>
-            <p class='text-lg font-semibold my-4'>{{ data?.categoryTitle }} {{ data?.storeItem.title }}</p>
-            <p>Recommendations list:</p>
-            <div v-for='item in data?.recommendationList'>
-                <p>{{ data?.categoryTitle }} {{ item.title }}</p>
-            </div>
+            <DetailsItem :data="data" />
         </div>
         <TheLink to="/" />
     </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 const route = useRoute();
 const slug = ref(route.params.slug);
 

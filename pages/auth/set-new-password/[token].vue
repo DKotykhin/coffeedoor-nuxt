@@ -9,7 +9,7 @@
     </main>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 const { isLoggedIn } = useUserStore();
 const localePath = useLocalePath();
 

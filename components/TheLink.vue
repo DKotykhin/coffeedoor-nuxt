@@ -4,7 +4,7 @@
     </UButton>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 const localePath = useLocalePath();
 
 defineProps({

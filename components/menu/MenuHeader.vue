@@ -20,7 +20,7 @@
     </section>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 const localePath = useLocalePath();
 const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
