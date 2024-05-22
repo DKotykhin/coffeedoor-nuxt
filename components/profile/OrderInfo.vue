@@ -22,6 +22,7 @@
 import type { UserOrdersProps } from '~/server/services/user/getUserOrders';
 
 const router = useRouter();
+const { toastError } = useAppToast();
 const { path, query } = router.currentRoute.value;
 const ordersOnPage = ref(2)
 const page = ref(router.currentRoute.value.query.page ? Number(router.currentRoute.value.query.page) : 1);
@@ -37,7 +38,10 @@ const fetchOrders = async (page: number, limit: number): Promise<UserOrdersProps
         }
         return response as unknown as UserOrdersProps;
     } catch (error) {
-        console.error('Error fetching orders:', error);
+        toastError({
+            title: 'Error fetching orders',
+            description: error.message,
+        })
         return null;
     } finally {
         isLoading.value = false;

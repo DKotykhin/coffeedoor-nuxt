@@ -10,7 +10,7 @@
     </form-wrapper>
 </template>
 
-<script setup lang='ts'>
+<script setup>
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 
@@ -18,8 +18,7 @@ import { emailValidationSchema } from '@/validation/userValidation';
 
 const route = useRoute();
 const localePath = useLocalePath();
-const toast = useToast();
-
+const { toastError, toastSuccess } = useAppToast();
 const loading = ref(false);
 
 const { handleSubmit } = useForm({
@@ -37,19 +36,15 @@ const onSubmit = handleSubmit(async value => {
     });
     loading.value = false;
     if (error) {
-        toast.add({
+        toastError({
             title: 'Resend Email Error',
             description: error.message,
-            color: 'red',
-            icon: 'i-heroicons-x-circle',
         });
         return;
     }
-    toast.add({
+    toastSuccess({
         title: 'Successfully resend Email',
         description: data.message,
-        color: 'mint',
-        icon: 'i-heroicons-check-circle',
     });
 });
 
@@ -57,11 +52,9 @@ onMounted(async () => {
     if (!route.params.token) return;
     const { data, error } = await $fetch(`/api/user/verify-email?token=${route.params.token}`);
     if (error) {
-        toast.add({
+        toastError({
             title: 'Verify Email Error',
             description: error.message,
-            color: 'red',
-            icon: 'i-heroicons-x-circle',
         });
         return;
     }

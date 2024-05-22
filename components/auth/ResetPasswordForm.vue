@@ -19,9 +19,8 @@ import { toTypedSchema } from '@vee-validate/zod';
 
 import { emailValidationSchema } from '@/validation/userValidation';
 
-const toast = useToast();
+const { toastError, toastSuccess } = useAppToast();
 const localePath = useLocalePath();
-
 const loading = ref(false);
 
 const { handleSubmit } = useForm({
@@ -33,25 +32,21 @@ const { handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(async value => {  
     loading.value = true;
-    const { error } = await $fetch('/api/user/reset-password', { 
+    const { error }: { error: any } = await $fetch('/api/user/reset-password', { 
         method: 'POST',
         body: value, 
     });
     loading.value = false;
     if (error) {
-        toast.add({
+        toastError({
             title: 'Password Recovery Error',
             description: error.message,
-            color: 'red',
-            icon: 'i-heroicons-x-circle',
         });
         return;
     }
-    toast.add({
+    toastSuccess({
         title: 'Password Recovery Link',
         description: 'Successfully send link for password recovery',
-        color: 'mint',
-        icon: 'i-heroicons-check-circle',
     });
 });
 </script>

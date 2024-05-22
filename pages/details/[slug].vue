@@ -1,12 +1,14 @@
 <template>
-    <section class='text-center'>
-        <div v-if="pending">
-            <TheSkeleton />
+    <section class="flex justify-center w-full">
+        <div class='max-w-[1440px] w-full mt-2 px-4'>
+            <div v-if="pending">
+                <TheSkeleton />
+            </div>
+            <div v-else>
+                <DetailsItem :data="data" />
+                <BasketIcon />
+            </div>
         </div>
-        <div v-else class='my-4'>
-            <DetailsItem :data="data" />
-        </div>
-        <TheLink to="/" />
     </section>
 </template>
 

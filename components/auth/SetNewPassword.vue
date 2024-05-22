@@ -24,8 +24,7 @@ import { setNewPasswordValidationSchema } from '@/validation/userValidation';
 
 const localePath = useLocalePath();
 const route = useRoute();
-const toast = useToast();
-
+const { toastError, toastSuccess } = useAppToast();
 const loading = ref(false);
 
 const { handleSubmit } = useForm({
@@ -38,25 +37,21 @@ const { handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(async value => {
     loading.value = true;
-    const { error } = await $fetch(`/api/user/set-new-password?token=${route.params.token}`, {
+    const { error }: { error: any } = await $fetch(`/api/user/set-new-password?token=${route.params.token}`, {
         method: 'POST',
         body: value,
     });
     loading.value = false;
     if (error) {
-        toast.add({
+        toastError({
             title: 'Set New Password Error',
             description: error.message,
-            color: 'red',
-            icon: 'i-heroicons-x-circle',
         });
         return;
     }
-    toast.add({
+    toastSuccess({
         title: 'Set New Password Success',
         description: 'Successfully set new password',
-        color: 'mint',
-        icon: 'i-heroicons-check-circle',
     });
     return navigateTo(localePath('/auth/sign-in'));
 });

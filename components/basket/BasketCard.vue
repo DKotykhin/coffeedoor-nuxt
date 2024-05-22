@@ -18,17 +18,14 @@
 
 <script setup lang="ts">
 import { useBasketStore } from '~/stores/basketStore';
-import { useRouter } from 'vue-router';
 import type { BasketFormTypes } from '~/validation/basketValidation';
 import { useUserStore } from '~/stores/userStore';
 
 const userStore = useUserStore();
-
-const localePath = useLocalePath();
 const basketStore = useBasketStore();
+const localePath = useLocalePath();
 
 const basket = computed(() => basketStore.basket);
-
 const loading = ref(false);
 
 const submitForm = async (values: BasketFormTypes) => {

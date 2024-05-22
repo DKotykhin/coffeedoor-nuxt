@@ -24,8 +24,7 @@
     </form-wrapper>
 </template>
 
-<script setup lang='ts'>
-import { useRouter } from 'vue-router';
+<script setup>
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 
@@ -33,10 +32,9 @@ import { signInValidationSchema } from '@/validation/userValidation';
 import { useUserStore } from '~/stores/userStore';
 
 const loading = ref(false);
-const toast = useToast();
+const { toastError } = useAppToast();
 const cookie = useCookie('token');
 const userStore = useUserStore();
-const router = useRouter();
 const localePath = useLocalePath();
 
 const { handleSubmit } = useForm({
@@ -55,11 +53,9 @@ const onSubmit = handleSubmit(async values => {
     });
     loading.value = false;
     if (error) {
-        toast.add({
+        toastError({
             title: 'Sign In',
             description: error.message,
-            color: 'red',
-            icon: 'i-heroicons-x-circle',
         });
         return;
     }
