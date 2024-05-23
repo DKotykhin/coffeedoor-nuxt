@@ -45,7 +45,7 @@ const { handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(async values => {
     loading.value = true;
-    const { error }: { error: any } = await $fetch('/api/user/sign-up', {
+    const { error }: any = await $fetch('/api/user/sign-up', {
         method: 'POST',
         body: values,
     });

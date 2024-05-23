@@ -37,7 +37,7 @@ const { handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(async value => {
     loading.value = true;
-    const { error }: { error: any } = await $fetch(`/api/user/set-new-password?token=${route.params.token}`, {
+    const { error }: any = await $fetch(`/api/user/set-new-password?token=${route.params.token}`, {
         method: 'POST',
         body: value,
     });

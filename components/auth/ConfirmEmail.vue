@@ -10,7 +10,7 @@
     </form-wrapper>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 

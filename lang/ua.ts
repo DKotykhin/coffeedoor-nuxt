@@ -56,6 +56,7 @@ export default {
         unit: 'г',
         roasted: 'Обсмаження: ',
         isOrder: 'Під замовлення',
+        recommendation: 'Ми рекомендуємо',
     },
     about: {
         title: 'Про нас',

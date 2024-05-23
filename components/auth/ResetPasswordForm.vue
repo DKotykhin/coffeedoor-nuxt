@@ -32,7 +32,7 @@ const { handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(async value => {  
     loading.value = true;
-    const { error }: { error: any } = await $fetch('/api/user/reset-password', { 
+    const { error }: any = await $fetch('/api/user/reset-password', { 
         method: 'POST',
         body: value, 
     });

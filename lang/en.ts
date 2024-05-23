@@ -56,6 +56,7 @@ export default {
         unit: 'g',
         roasted: 'Roasted: ',
         isOrder: 'on order',
+        recommendation: 'We Recommended',
     },
     about: {
         title: 'About us',
