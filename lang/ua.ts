@@ -30,6 +30,7 @@ export default {
     top: {
         button_1: 'Магазин',
         button_2: "Меню кав'ярні",
+        button_3: 'Змінити аватар',
     },
     info: {
         title: "Кав'ярня та магазин свіжообсмаженої кави CoffeeDoor",

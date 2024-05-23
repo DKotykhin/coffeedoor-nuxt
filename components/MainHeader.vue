@@ -20,7 +20,7 @@
                     {{ $t('header.signIn') }}
                 </NuxtLink>
                 <UDropdown v-else :items="userItems" :popper="{ placement: 'bottom-start' }">
-                    <UAvatar :src="userStore.user.avatar || ''" :alt="userStore.user.userName || 'avatar'"
+                    <UAvatar :src="avatarUrl" :alt="userStore.user.userName || 'avatar'"
                         icon="i-heroicons-user-16-solid" />
                 </UDropdown>
             </ClientOnly>
@@ -39,6 +39,8 @@ const userStore = useUserStore();
 const cookie = useCookie('token');
 const router = useRouter();
 const toast = useToast();
+
+const avatarUrl = useImageUrl(userStore.user?.avatar || '');
 
 const signOut = () => {
     userStore.removeUser();

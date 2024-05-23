@@ -1,6 +1,6 @@
 import { db } from '@/libs/db';
 import { ApiError } from '@/handlers/apiError';
-import { cryptoToken, findUserByEmail, mailSender } from '@/utils/_index';
+import { cryptoToken_16, findUserByEmail, mailSender } from '@/utils/_index';
 import { emailValidate } from '@/validation/userValidation';
 
 export const resetPassword = async ({ email }: { email: string }): Promise<{ status: Boolean }> => {
@@ -14,7 +14,7 @@ export const resetPassword = async ({ email }: { email: string }): Promise<{ sta
         throw ApiError.badRequest('Email not verified. Check your email');
     }
 
-    const token = cryptoToken();
+    const token = cryptoToken_16();
     await mailSender({
         to: email,
         subject: 'Reset Password',

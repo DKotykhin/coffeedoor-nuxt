@@ -28,11 +28,11 @@ const { handleSubmit } = useForm({
     },
 });
 
-const onSubmit = handleSubmit(async value => {       
+const onSubmit = handleSubmit(async value => {
     loading.value = true;
-    const { data, error } = await $fetch('/api/user/resend-email', { 
+    const { data, error }: any = await $fetch('/api/user/resend-email', {
         method: 'POST',
-        body: value, 
+        body: value,
     });
     loading.value = false;
     if (error) {
@@ -50,7 +50,7 @@ const onSubmit = handleSubmit(async value => {
 
 onMounted(async () => {
     if (!route.params.token) return;
-    const { data, error } = await $fetch(`/api/user/verify-email?token=${route.params.token}`);
+    const { data, error }: any = await $fetch(`/api/user/verify-email?token=${route.params.token}`);
     if (error) {
         toastError({
             title: 'Verify Email Error',

@@ -1,13 +1,14 @@
 <template>
     <main class='w-full h-full flex flex-col items-center'>
         <ProfileOrderInfo />
+        <BasketIcon />
     </main>
 </template>
 
 <script setup lang='ts'>
 definePageMeta({
     middleware: ['auth'],
-})
+});
 
 useSeoMeta({
   title: "CoffeeDoor | Профіль",

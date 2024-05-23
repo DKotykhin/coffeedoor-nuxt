@@ -1,6 +1,6 @@
 import { db } from '@/libs/db';
 import { ApiError } from '@/handlers/apiError';
-import { cryptoToken, findUserByEmail, mailSender } from '~/utils/_index';
+import { cryptoToken_16, findUserByEmail, mailSender } from '~/utils/_index';
 
 export const resendEmail = async ({ email }: { email: string }): Promise<{ status: Boolean }> => {
     const user = await findUserByEmail(email);
@@ -11,7 +11,7 @@ export const resendEmail = async ({ email }: { email: string }): Promise<{ statu
         throw ApiError.badRequest('Email already confirmed');
     }
     if (user.emailConfirm?.expiredAt && new Date(user.emailConfirm.expiredAt) < new Date()) {
-        const token = cryptoToken();
+        const token = cryptoToken_16();
         await mailSender({
             to: email,
             subject: 'Verify Email',

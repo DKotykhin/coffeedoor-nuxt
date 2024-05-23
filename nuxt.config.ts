@@ -59,6 +59,9 @@ export default defineNuxtConfig({
             PHONE: process.env.PHONE,
             PHONE_LINK: process.env.PHONE_LINK,
         },
+        app: {
+            CLOUDINARY_NAME: process.env.CLOUDINARY_NAME,
+        },
     },
     colorMode: {
         preference: 'system', // default value of $colorMode.preference

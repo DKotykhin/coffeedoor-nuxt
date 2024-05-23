@@ -1,75 +1,32 @@
-# Nuxt 3 Minimal Starter
+# CoffeeDoor online shop
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![Logo](https://coffeedoor-next14-sql.vercel.app/logo_700x191.webp)
 
-## Setup
+## Technologies
 
-Make sure to install the dependencies:
+-   Vue 3, Nuxt 3, NuxtUI, Prisma ORM, postgreSQL, Typescript, Tailwind, Pinia, Axios, Bcrypt, Cloudinary, Resend, zod, jsonwebtoken, date-fns 
 
-```bash
-# npm
-npm install
+## Features
+- Nuxt 3 for frontend and backend
+- NuxtUI for UI
+- Postgres SQL DB placed on remote service. You can see all models in schema.prisma file
+- Full authorization with email verification and forgot password
+- avatar upload service
+- protected user pages
+- create, read and delete for Orders and Products
 
-# pnpm
-pnpm install
 
-# yarn
-yarn install
+## Environment Variables
 
-# bun
-bun install
-```
+To run this project locally, you will need to add the following environment variables to your .env file. See also in .env.example in root directory
 
-## Development Server
+## Deploy on Vercel
 
-Start the development server on `http://localhost:3000`:
+[Deploy Link](https://coffeedoor-nuxt.vercel.app)
 
-```bash
-# npm
-npm run dev
+## Author
 
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Dmytro Kotykhin
+-   [Github](https://github.com/DKotykhin)
+-   [Web](https://dmytro-kotykhin.space)
+-   [LinkedIn](https://www.linkedin.com/in/dmytro-kotykhin-4683151b)

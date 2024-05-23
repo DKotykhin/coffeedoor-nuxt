@@ -4,7 +4,7 @@
             <div class="flex justify-end items-center max-w-[1440px] w-full py-3 px-6">
                 <p class='text-lg text-white mr-4'>{{ userStore.user?.userName }}</p>
                 <UDropdown :items="userItems" :popper="{ placement: 'bottom-start' }">
-                    <UAvatar :src="userStore.user?.avatar || ''" :alt="userStore.user?.userName || 'avatar'"
+                    <UAvatar :src="avatarUrl" :alt="userStore.user?.userName || 'avatar'"
                         icon="i-heroicons-user-16-solid" />
                 </UDropdown>
             </div>
@@ -21,6 +21,8 @@ const localePath = useLocalePath();
 const userStore = useUserStore();
 const router = useRouter();
 const cookie = useCookie('token');
+
+const avatarUrl = useImageUrl(userStore.user?.avatar || '');
 
 const signOut = () => {
     userStore.removeUser();
@@ -41,6 +43,13 @@ const userItems = [
         icon: 'i-heroicons-clipboard-document-list',
         click: () => {
             router.push({ path: localePath('/menu') });
+        }
+    },
+    {
+        label: t('top.button_3'),
+        icon: 'i-heroicons-user-16-solid',
+        click: () => {
+            router.push({ path: localePath('/change-avatar') });
         }
     }],
     [{

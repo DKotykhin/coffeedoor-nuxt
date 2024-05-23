@@ -30,6 +30,7 @@ export default {
     top: {
         button_1: 'CoffeeShop',
         button_2: 'CoffeeBar',
+        button_3: 'Change avatar',
     },
     info: {
         title: 'CoffeeDoor Brew Bar & Coffeeshop',

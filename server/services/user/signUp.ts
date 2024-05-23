@@ -1,7 +1,7 @@
 import { User } from '@prisma/client';
 import { db } from '@/libs/db';
 import { ApiError } from '@/handlers/apiError';
-import { cryptoToken, findUserByEmail, mailSender, PasswordHash } from '@/utils/_index';
+import { cryptoToken_16, findUserByEmail, mailSender, PasswordHash } from '@/utils/_index';
 import { SignUpTypes, signUpValidate } from '@/validation/userValidation';
 
 export const signUp = async (signUpData: SignUpTypes): Promise<{ user: User }> => {
@@ -12,7 +12,7 @@ export const signUp = async (signUpData: SignUpTypes): Promise<{ user: User }> =
         throw ApiError.badRequest(`User ${email} already exist`);
     }
     const passwordHash = await PasswordHash.create(password);
-    const token = cryptoToken();
+    const token = cryptoToken_16();
 
     const user = await db.user.create({
         data: {
