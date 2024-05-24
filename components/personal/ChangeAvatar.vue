@@ -1,5 +1,10 @@
 <template>
     <block-wrapper>
+        <div class='w-full -mt-2 md:-mt-8'>
+            <UButton :to="localePath('/profile')" variant='ghost' class='p-0'>
+                <Icon name="i-mdi-arrow-left" size='30' />
+            </UButton>
+        </div>
         <h1 class='text-[24px] font-semibold mb-2'>
             {{ $t('top.button_3') }}
         </h1>
@@ -12,14 +17,17 @@
                 <UInput type='file' accept='image/*' ref='fileInput' />
             </UFormGroup>
         </div>
-        <UButton variant="solid" :label="$t('top.button_3')" :loading="loading" :disabled="loading" @click="saveAvatar"
-            class='my-4' />
-        <TheLink to="/profile" />
+        <UButton :label="$t('top.button_3')" :loading="loading" :disabled="loading"
+            @click="saveAvatar" class='my-8' />
+        <NuxtLink :to="localePath('/')" class='text-mint uppercase font-medium hover:underline mt-2 text-center'>
+            {{ $t("auth.button") }}
+        </NuxtLink>
     </block-wrapper>
 </template>
 
 <script setup lang="ts">
 const userStore = useUserStore();
+const localePath = useLocalePath();
 const { toastError, toastSuccess } = useAppToast();
 
 const loading = ref(false);

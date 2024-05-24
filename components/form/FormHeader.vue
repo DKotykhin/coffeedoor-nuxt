@@ -1,13 +1,16 @@
 <template>
-    <h1 class='text-[24px] font-semibold mb-2'>
+    <h1 class='text-[24px] font-semibold'>
         {{ title }}
     </h1>
-    <div class='flex justify-center items-center w-full text-center max-w-[80px] h-[80px] bg-grey-100 rounded-full'>
-        <Icon name="mdi:account" size='50' class='text-grey-600' />
-    </div>
+    <ClientOnly>
+        <UAvatar size='3xl' :src="avatarUrl" :alt="userStore.user?.userName || 'avatar'" icon="i-heroicons-user-16-solid" />
+    </ClientOnly>
 </template>
 
 <script setup lang='ts'>
+const userStore = useUserStore();
+const avatarUrl = useImageUrl(userStore.user?.avatar || '');
+
 defineProps({
     title: {
         type: String,

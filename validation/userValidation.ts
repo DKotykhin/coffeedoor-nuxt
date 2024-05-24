@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { ApiError } from '@/handlers/apiError';
-import { email, password, textFieldRequired } from '@/validation/_fields';
+import { areaTextField, email, password, phone, textFieldRequired } from '@/validation/_fields';
 
 export const signUpValidationSchema = z.object({
     userName: textFieldRequired,
@@ -41,12 +41,16 @@ export const emailValidate = async (validateData: { email: string }) => {
     }
 };
 
-export const userNameValidationSchema = z.object({
+export const personalDataValidationSchema = z.object({
+    email,
     userName: textFieldRequired,
+    phone,
+    address: areaTextField,
 });
-export const userNameValidate = async (validateData: { userName: string }) => {
+export type PersonalDataTypes = z.infer<typeof personalDataValidationSchema>;
+export const personalDataValidate = async (validateData: { userName: string }) => {
     try {
-        return await userNameValidationSchema.parseAsync(validateData);
+        return await personalDataValidationSchema.parseAsync(validateData);
     } catch (err: any) {
         throw ApiError.unprocessableEntity(err?.issues[0]?.message);
     }

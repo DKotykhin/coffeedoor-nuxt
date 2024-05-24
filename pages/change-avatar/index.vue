@@ -1,6 +1,6 @@
 <template>
     <section>
-        <AvatarChangeAvatar />
+        <PersonalChangeAvatar />
     </section>
 </template>
 

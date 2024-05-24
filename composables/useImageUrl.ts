@@ -10,8 +10,7 @@ export const useImageUrl = (image : string) => {
             cloudName: runtimeConfig.app.CLOUDINARY_NAME,
         },
     });
-    const img = cld.image(image || '');
-    const imageUrl = img.toURL();
+    const imageUrl = cld.image(image).toURL();
 
     return imageUrl;
 };

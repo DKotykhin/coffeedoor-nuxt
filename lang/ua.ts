@@ -31,6 +31,8 @@ export default {
         button_1: 'Магазин',
         button_2: "Меню кав'ярні",
         button_3: 'Змінити аватар',
+        button_4: 'Змінити пароль',
+        button_5: 'Змінити особисті дані',
     },
     info: {
         title: "Кав'ярня та магазин свіжообсмаженої кави CoffeeDoor",
@@ -135,5 +137,14 @@ export default {
         title: 'Історія замовлень',
         total: 'Всього замовлень: ',
         empty: 'Замовлень поки немає',
+        confirmPassword: 'Підтвердіть пароль',
+        changePassword: 'Змінити пароль',
+        oldPassword: 'Старий пароль',
+        newPassword: 'Новий пароль',
+        changeData: 'Змінити особисті дані',
+        phone: 'Ваш телефон',
+        phonePlaceholder: '+380...',
+        address: 'Адреса доставки',
+        addressPlaceholder: 'Введіть адресу...',
     }, 
 };

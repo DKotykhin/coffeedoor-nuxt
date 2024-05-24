@@ -31,6 +31,8 @@ export default {
         button_1: 'CoffeeShop',
         button_2: 'CoffeeBar',
         button_3: 'Change avatar',
+        button_4: 'Change password',
+        button_5: 'Change personal data',
     },
     info: {
         title: 'CoffeeDoor Brew Bar & Coffeeshop',
@@ -135,5 +137,14 @@ export default {
         title: 'Orders history',
         total: 'Total orders: ',
         empty: 'No orders yet',
+        confirmPassword: 'Confirm password',
+        changePassword: 'Change password',
+        oldPassword: 'Old password',
+        newPassword: 'New password',
+        changeData: 'Change personal data',
+        phone: 'Mobile phone',
+        phonePlaceholder: '+380...',
+        address: 'Address',
+        addressPlaceholder: 'Enter your address...',
     }, 
 };

@@ -51,7 +51,22 @@ const userItems = [
         click: () => {
             router.push({ path: localePath('/change-avatar') });
         }
-    }],
+    },
+    {
+        label: t('top.button_4'),
+        icon: 'i-heroicons-lock-closed',
+        click: () => {
+            router.push({ path: localePath('/change-password') });
+        }
+    },
+    {
+        label: t('top.button_5'),
+        icon: 'i-heroicons-pencil-square-16-solid',
+        click: () => {
+            router.push({ path: localePath('/change-personal-data') });
+        }
+    }
+],
     [{
         label: t('header.signOut'),
         icon: 'i-heroicons-arrow-right-on-rectangle',

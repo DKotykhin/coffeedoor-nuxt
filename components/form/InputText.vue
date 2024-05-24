@@ -1,7 +1,7 @@
 <template>
     <div class='w-full'>
         <label class='text-[14px] text-grey-500'>{{ label }}</label>
-        <UInput v-model="value" type="text" :placeholder="placeholder" size='lg'
+        <UInput :disabled='disabled' v-model="value" type="text" :placeholder="placeholder" size='lg'
             :color="(Boolean(errorMessage) ? 'red' : 'white')" />
         <p class='text-[14px] text-red-500'>{{ errorMessage }}</p>
     </div>
@@ -17,6 +17,10 @@ const props = defineProps({
     },
     label: String,
     placeholder: String,
+    disabled: {
+        type: Boolean,
+        default: false,
+    }
 });
 
 const { value, errorMessage } = useField(() => props.name);
