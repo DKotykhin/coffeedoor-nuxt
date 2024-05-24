@@ -1,7 +1,7 @@
 <template>
     <header
         class='w-full max-w-[1440px] flex justify-between items-center h-[80px] pl-4 pr-14 md:px-14 text-white dark:text-grey-200'>
-        <NuxtLink to="/">
+        <NuxtLink to="/" class='hidden md:block'>
             <h1 class='text-2xl font-medium text-mint-500'>CoffeeDoor</h1>
         </NuxtLink>
         <div class='flex gap-4 md:gap-8 items-center'>

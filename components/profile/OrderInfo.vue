@@ -37,7 +37,7 @@ const fetchOrders = async (page: number, limit: number): Promise<UserOrdersProps
             router.push({ path, query: { ...query, page } });
         }
         return response as unknown as UserOrdersProps;
-    } catch (error) {
+    } catch (error: any) {
         toastError({
             title: 'Error fetching orders',
             description: error.message,
