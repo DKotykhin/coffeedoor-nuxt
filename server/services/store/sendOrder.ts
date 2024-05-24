@@ -4,6 +4,7 @@ import { db } from '@/libs/db';
 import { ApiError } from '@/handlers/apiError';
 import { BasketFormTypes } from '@/validation/basketValidation';
 import { IBasket } from '@/stores/basketStore';
+import { mailSender } from '~/utils/_index';
 
 export interface OrderDataProps {
     userFormData: BasketFormTypes;
@@ -51,26 +52,68 @@ export const sendOrder = async (orderData: OrderDataProps): Promise<{ status: Bo
 
     const averageSum = Math.round(orderSum / orderQuantity);
 
-    await axios.post(URL, {
-        chat_id: CHAT_ID,
-        parse_mode: 'html',
-        text: message,
-    });
+    let emailMessage = `<b>--- Заявка з сайту ---</b><br/>`;
+    emailMessage += `<b>Відправник: </b>${userName}<br/>`;
+    emailMessage += `<b>Телефон: </b>+${phone}<br/>`;
+    emailMessage += `<b>Спосіб доставки: </b>${deliveryWay}<br/>`;
+    emailMessage += `<b>Коментар: </b>${comment ? comment : ''}<br/>`;
+    emailMessage += `<b>Замовлення: </b><br/>`;
 
-    const order = await db.userOrder.create({
-        data: {
-            deliveryWay,
-            comment,
-            totalSum: orderSum,
-            totalQuantity: orderQuantity,
-            averageSum,
-            userId,
-        },
+    basketData.forEach((item) => {
+        emailMessage += `${item.categoryTitle} ${item.title}, ${item.weight ? `${item.weight}г,` : ''} ${
+            item.quantity
+        } x ${item.price} грн<br/>`;
     });
-    if (!order?.id) {
-        throw ApiError.badRequest("User order can't be created");
+    emailMessage += `<b>Загалом позицій: </b>${orderQuantity}<br/>`;
+    emailMessage += `<b>Всього на суму: </b>${orderSum} грн`;
+
+    try {        
+        await axios.post(URL, {
+            chat_id: CHAT_ID,
+            parse_mode: 'html',
+            text: message,
+        });
+    
+        const user = await db.user.findUnique({
+            where: { id: userId },
+            include: {
+                emailConfirm: {
+                    select: {
+                        verified: true,
+                    },
+                },
+            },
+        });
+        if (user?.emailConfirm?.verified) {
+            await mailSender({
+                to: user.email,
+                subject: 'New order',
+                html: `
+                    ${emailMessage}
+                    <hr/>
+                    <br/>
+                    <a href='${process.env.FRONTEND_URL}'>CoffeeDoor online shop</a>
+                `,
+            });
+        };
+    } catch (error) {
+        throw ApiError.badRequest('Order can not be sent') 
     }
+
     try {
+        const order = await db.userOrder.create({
+            data: {
+                deliveryWay,
+                comment,
+                totalSum: orderSum,
+                totalQuantity: orderQuantity,
+                averageSum,
+                userId,
+            },
+        });
+        if (!order?.id) {
+            throw ApiError.badRequest("User order can't be created");
+        }
         const transaction = basketData.map((item) => {
             const { categoryTitle, title, weight, price, quantity, slug } = item;
             return db.orderItem.create({

@@ -7,14 +7,17 @@
 -   Vue 3, Nuxt 3, NuxtUI, Prisma ORM, postgreSQL, Typescript, Tailwind, Pinia, Axios, Bcrypt, Cloudinary, Resend, zod, jsonwebtoken, date-fns 
 
 ## Features
-- Nuxt 3 for frontend and backend
+- Vue 3 and Nuxt 3 for frontend and backend
 - NuxtUI for UI
 - Postgres SQL DB placed on remote service. You can see all models in schema.prisma file
 - Full authorization with email verification and forgot password
 - avatar upload service
+- update user personal data
 - protected user pages
-- create, read and delete for Orders and Products
-
+- menu and products pages
+- details page with product recommendations
+- Telegram group notification for new orders
+- Email notification
 
 ## Environment Variables
 
