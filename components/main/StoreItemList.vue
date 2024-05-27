@@ -1,8 +1,8 @@
 <template>
-    <div v-if='filter.length' class='flex gap-2 flex-wrap min-h-7'>
+    <div v-if='filter.length' class='flex gap-2 min-h-7'>
         <UButton @click='showFilterClick' variant='ghost' icon="i-heroicons-funnel"
-            class='mx-4' size='xs' :padded="false" />
-        <div v-if='showFilter' class='flex gap-2'>
+            class='mx-4 max-h-7' size='xs' :padded="false" />
+        <div v-if='showFilter' class='flex flex-wrap gap-3'>
             <UChip :text="items?.length" size="2xl">
                 <UButton :label='allValue' size='xs' :variant="activeFilter === allValue ? 'solid' : 'outline'"
                     :ui="{ rounded: 'rounded-full' }" @click="filterClick(allValue)" />
