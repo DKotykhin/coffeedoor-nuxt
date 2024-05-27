@@ -35,7 +35,7 @@ const submitForm = async (values: BasketFormTypes) => {
         basketData: basketStore.basket,
         userId: userStore.user?.id,
     };
-    console.log(orderData);
+    // console.log(orderData);
     const status = await $fetch('/api/store/send-order', {
         method: 'POST',
         body: orderData,

@@ -10,11 +10,11 @@
                 </p>
                 <p class='text-grey-800 dark:text-grey-200 text-xl font-medium'>{{ item.price }} {{ $t('card.currency') }}</p>
             </div>
-            <p class='text-sm font-light text-grey italic'>{{ item.description }}</p>
+            <p v-if='item.description' class='text-sm font-light text-grey italic'>{{ item.description }}</p>
             <div class='text-sm font-light text-grey'>
                 <p v-if='item.toOrder' class='text-red'>{{ $t('card.isOrder') }}</p>
-                <p>{{ $t('card.weight') }} {{ item.weight }} {{ $t('card.unit') }}</p>
-                <p>{{ item.sortKey }}: {{ item.sortValue }}</p>
+                <p v-if='item.weight'>{{ $t('card.weight') }} {{ item.weight }} {{ $t('card.unit') }}</p>
+                <p v-if='item.sortKey'>{{ item.sortKey }}: {{ item.sortValue }}</p>
             </div>
         </div>
         <template #footer>
