@@ -10,8 +10,8 @@ export default defineEventHandler(async (event: H3Event) => {
     }
     try {
         return await getUserByToken(token);
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        console.error('Error: ' + error.status + ' - ' + error.message);
         return null;
     }
 });

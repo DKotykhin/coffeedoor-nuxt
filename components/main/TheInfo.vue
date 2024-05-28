@@ -11,7 +11,7 @@
         </div>
         <div class='flex flex-col gap-8 max-w-[700px]'>
             <div class='flex items-start gap-6 md:gap-8'>
-                <Icon name="mdi:clock-outline" size='50' class='shrink-0' />
+                <Icon name="mdi:clock-outline" class='shrink-0 text-4xl md:text-5xl' />
                 <div>
                     <p class='text-xl md:text-2xl mb-2 font-semibold'>{{ $t("info.openTimesTitle") }}</p>
                     <p class='md:text-lg font-light text-grey-700 dark:text-grey-200'>{{ $t("info.openTimes_1") }}</p>
@@ -19,14 +19,14 @@
                 </div>
             </div>
             <div class='flex items-start gap-6 md:gap-8'>
-                <Icon name="mdi:truck-delivery-outline" size='50' class='shrink-0' />
+                <Icon name="mdi:truck-delivery-outline" class='shrink-0 text-4xl md:text-5xl' />
                 <div>
                     <p class='text-xl md:text-2xl mb-2 font-semibold'>{{ $t("info.deliveryTitle") }}</p>
                     <p class='md:text-lg font-light text-grey-700 dark:text-grey-200'>{{ $t("info.deliveryOptions") }}</p>
                 </div>
             </div>
             <div class='flex items-start gap-6 md:gap-8'>
-                <Icon name="mdi:map-marker-circle" size='50' class='shrink-0' />
+                <Icon name="mdi:map-marker-circle" class='shrink-0 text-4xl md:text-5xl' />
                 <div>
                     <p class='text-xl md:text-2xl mb-2 font-semibold'>{{ $t("info.contactsTitle") }}</p>
                     <p class='md:text-lg font-light text-grey-700 dark:text-grey-200'>{{ $t("info.address") }}</p>

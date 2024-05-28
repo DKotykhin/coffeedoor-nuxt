@@ -1,5 +1,5 @@
 <template>
-    <section class='flex flex-col items-center mt-10 gap-6 px-4'>
+    <section class='flex flex-col items-center mt-12 gap-6 px-4'>
         <NuxtLink :to="localePath('/')">
             <NuxtImg src="/logo_700x191.webp" width='700' alt='logo' :placeholder="[700, 191]" />
         </NuxtLink>

@@ -15,8 +15,8 @@ export default defineEventHandler(async (event: H3Event) => {
         page: query.page ? parseInt(query.page.toString()) : null,
         token,
     });
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        console.error('Error: ' + error.status + ' - ' + error.message);
         return null;
     }
 });

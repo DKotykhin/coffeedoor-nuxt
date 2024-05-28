@@ -42,4 +42,17 @@ onMounted(() => {
 .fade-enter-from {
     opacity: 0;
 }
+
+.bg_image {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),
+        url(../../assets/background-images/background.webp) center center/cover no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),
+            url(../../assets/background-images/background_small.webp) center center/cover no-repeat;
+        background-attachment: scroll;
+    }
+}
 </style>

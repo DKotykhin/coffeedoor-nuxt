@@ -1,6 +1,6 @@
 <template>
     <div class='w-full'>
-        <label class='text-[14px] text-grey-500'>{{ label }}</label>
+        <label class='text-[14px] text-grey-500 dark:text-grey-200'>{{ label }}</label>
         <UInput :disabled='disabled' v-model="value" type="text" :placeholder="placeholder" size='lg'
             :color="(Boolean(errorMessage) ? 'red' : 'white')" />
         <p class='text-[14px] text-red-500'>{{ errorMessage }}</p>
